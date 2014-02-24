@@ -4,15 +4,30 @@ angular.module('ellenApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ui.router'
 ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    var access = routingConfig.accessLevels;
+
+    // public routes
+    $stateProvider
+      .state('public', {
+        abstract: true,
+        template: '<ui-view/>'
       })
-      .otherwise({
-        redirectTo: '/'
+      .state('public.404', {
+        url: '/404/',
+        templateUrl: '404'
+      });
+    // anonymous routes
+    $stateProvider
+      .state('anon', {
+        abstract: true,
+        template: '<ui-view/>'
+      })
+      .state('anon.login', {
+        url: '/login/',
+        templateUrl: 'login',
+        controller: 'LoginCtrl'
       });
   });

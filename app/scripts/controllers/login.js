@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('LoginCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

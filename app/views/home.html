@@ -1,1 +1,15 @@
 <p>This is the home view.</p>
+<button ng-click="ask()">ask</button>
+
+<section ng-repeat="(key, value) in questions">
+  <article>
+    <b>{{key}}</b>
+    <h1>{{value.title}}</h1>
+    <p>
+      {{value.content}}
+      {{value.category_id}} | {{value.created}} | {{value.author_id}}
+    </p>
+  </article>
+</section>
+<input type="text" ng-model="question">
+<button ng-click="get()">get</button>

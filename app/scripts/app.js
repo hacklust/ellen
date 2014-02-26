@@ -16,6 +16,7 @@ angular.module('ellenApp', [
 
     $stateProvider
       .state('home',{
+        // authRequired: true, // add this to routes that need authentication :D
         url: '/',
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl'

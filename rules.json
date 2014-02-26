@@ -1,0 +1,7 @@
+{
+  "rules": {
+    // all questions are visible to everyone
+    ".read": true,
+    "users":
+  }
+}

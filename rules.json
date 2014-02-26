@@ -1,7 +1,29 @@
 {
-  "rules": {
-    // all questions are visible to everyone
-    ".read": true,
-    "users":
-  }
+    "rules": {
+        ".read": true,
+        "questions": {
+          "$question": {
+              ".write" : "auth != null && !data.exists()",
+              ".validate": "newData.hasChildren(['author_id', 'title', 'content', 'created', 'category_id'])",
+              "author_id": {
+                ".validate": "newData.val() == auth.id"  
+              }
+          } 
+        },
+        "answers": {
+          "$answer": {
+            ".write" : "auth != null && !data.exists()",
+            ".validate": "newData.hasChildren(['author_id', 'question_id', 'content', 'created'])",
+            "author_id": {
+              ".validate": "newData.val() == auth.id"  
+            },
+            "question_id": {
+              // The question must exist first
+              "$question_id": {
+                ".validate": "root.child('questions').hasChild($question_id)"
+              }
+            }
+          }
+        }
+    }
 }

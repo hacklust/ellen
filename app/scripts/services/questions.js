@@ -22,6 +22,17 @@ angular.module('ellenApp')
         },
         delete: function(id) {
           return questions.$remove(id);
+        },
+        // additional functions
+        addComment: function(postID, comment) {
+
+          comment.author = {id: auth.user.id, name: auth.user.name};
+          comment.postID = postID;
+
+          questions.$child(postID).$child('comments').$add(comment).then(function(ref){
+            
+          });
+
         }
       }
 

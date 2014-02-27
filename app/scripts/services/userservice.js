@@ -1,10 +1,28 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('UserService', function ($firebase, firebaseRef, auth, $rootScope) {
+  .factory('UserService', function ($firebaseSimpleLogin, $firebase, firebaseRef, Auth, $rootScope) {
     var ref = firebaseRef('/users');
     var users = $firebase(ref);
-    var currentUser = {};
+
+    function findById(id) {
+      var user = users.$child(id);
+      return user;
+    };
+
+    function setCurrentUser(UserId) {
+      $rootScope.currentUser = findById(UserId);
+    };
+
+    // persist on refresh....
+
+    $rootScope.$on('$firebaseSimpleLogin:login', function (e, authUser) {
+      var query = $firebase(ref);
+      $rootScope.signedIn = $rootScope.currentUser !== null;
+      query.$on('loaded', function () {
+        setCurrentUser(query.$getIndex()[0]);
+      });
+    });
 
     return {
       findById: function(id) {
@@ -12,13 +30,13 @@ angular.module('ellenApp')
         return user;
       },
       getAuth: function() {
-        return auth.getAuth();
+        return Auth.getAuth();
       },
       getCurrent: function() {
-        return auth.getAuth().user;
+        return $rootScope.currentUser;
       },
-      setCurrent: function(u) {
-        currentUser = u;
+      setCurrent: function(UserId) {
+        $rootScope.currentUser = findById(UserId);
       },
       signedIn: function () {
         return $rootScope.currentUser !== undefined;

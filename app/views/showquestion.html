@@ -1,6 +1,42 @@
-<div>
-  <a href="{{url}}">{{ question.title }}</a>
-  <p>{{question.content}}</p>
+<article>
+  <h3>Title:<a href="{{url}}">{{question.title}}</a> </h3>
+  <b>author: <a href="#/users/{{question.author.id}}">{{question.author.name}}</a></b>
+  <blockquote><b>Date Created: </b><i>{{question.created | date:'fullDate'}}</i></blockquote>
+  <p>
+    {{question.content}}
+  </p>
+  <div ng-repeat="(commentId, comment) in question.comments" class="row cmt">
+    <div class="col-md-12">
+      <p>{{ comment.content }}</p>
+      <p class="author">posted by <a href="#/users/{{ comment.author.id }}">{{ comment.author.name }}</a></p>
+      <a ng-click="removeComment(comment, commentId)" ng-show="comment.author.id === currentUser.id">(delete)</a></p>
+    </div>
+  </div>
+  <div class="cmt-form">
+    <form>
+      <textarea ng-model="comment.content" placeholder="Post a Comment" class="form-control"></textarea><br />
+      <input type="submit" ng-click="addComment()" value="Post Comment" class="btn btn-primary" />
+    </form>
+  </div>
+</article>
+
+<h3>Answers</h3>
+<div ng-repeat="(answerId, answer) in question.answers" class="row cmt">
+  <div class="col-md-12">
+    <p>
+      {{ answer.content }}<br>
+      <a href="#/answer/{{id}}/{{answerId}}">see more...</a>
+    </p>
+    <p class="author">posted by <a href="#/users/{{ answer.author.id }}">{{ answer.author.name }}</a></p>
+    <a ng-click="removeAnswer(answer, answerId)" ng-show="answer.author.id === currentUser.id">(delete)</a></p>
+  </div>
 </div>
+<div class="cmt-form">
+  <form>
+    <textarea ng-model="answer.content" placeholder="Answer the Question" class="form-control"></textarea><br />
+    <input type="submit" ng-click="addAnswer()" value="Answer Question" class="btn btn-primary" />
+  </form>
+</div>
+
  
-<a href="#/ask">Back to Questions</a>
+<a href="#/">Back to Questions</a>

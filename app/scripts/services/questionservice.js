@@ -1,15 +1,13 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('QuestionService', function ($firebase, firebaseRef, auth) {
+  .factory('QuestionService', function ($firebase, firebaseRef, UserService, $rootScope, Auth) {
     
       // ref questions
       var ref = firebaseRef('/questions');
       // get all questions
       var questions = $firebase(ref);
 
-      
-      var auth = auth.getAuth();
       return {
         all: questions,
         create: function(question) {

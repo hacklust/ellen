@@ -1,0 +1,22 @@
+<article>
+  <b>author: <a href="#/users/{{answer.author.id}}">{{answer.author.name}}</a></b>
+  <blockquote><b>Date Created: </b><i>{{answer.created | date:'fullDate'}}</i></blockquote>
+  <p>
+    {{answer.content}}
+  </p>
+  <div ng-repeat="(commentId, comment) in question.comments" class="row cmt">
+    <div class="col-md-12">
+      <p>{{ comment.content }}</p>
+      <p class="author">posted by <a href="#/users/{{ comment.author.id }}">{{ comment.author.name }}</a></p>
+      <a ng-click="removeComment(comment, commentId)" ng-show="comment.author.id === currentUser.id">(delete)</a></p>
+    </div>
+  </div>
+  <div class="cmt-form">
+    <form>
+      <textarea ng-model="comment.content" placeholder="Post a Comment" class="form-control"></textarea><br />
+      <input type="submit" ng-click="addComment()" value="Post Comment" class="btn btn-primary" />
+    </form>
+  </div>
+</article>
+
+<a href="#/">Back to Questions</a>

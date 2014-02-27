@@ -1,16 +1,22 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('HomeCtrl', function ($scope, UserService, QuestionService) {
+  .controller('HomeCtrl', function ($scope, UserService, QuestionService, Auth) {
 
     $scope.questions = QuestionService.all;
     $scope.question = '';
+
+    $scope.logout = function() {
+      Auth.logout();
+    }
 
     $scope.ask = function() {
       // the real thing 
       QuestionService.create($scope.question);
       // reset question
       $scope.question = '';
+
+      
       // testing below
       var query = QuestionService.find('-JGo8dEqooyAn4vGbbko');
       query.$on('loaded', function() {

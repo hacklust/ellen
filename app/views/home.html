@@ -1,13 +1,12 @@
 <p>This is the home view.</p>
 <button ng-click="ask()">ask</button>
 
-<section ng-repeat="(key, value) in questions">
+<section ng-repeat="(id, q) in questions">
   <article>
-    <b>{{key}}</b>
-    <h1>{{value.title}}</h1>
+    <h3><a href="#/questions/{{id}}">{{q.title}}</h3>
+    <b><a href="#/users/{{q.authorID}}">{{q.created}}</a></b>
     <p>
-      {{value.content}}
-      {{value.category_id}} | {{value.created}} | {{value.author_id}}
+      {{q.content}}
     </p>
   </article>
 </section>

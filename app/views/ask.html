@@ -1,0 +1,15 @@
+<p>This is the ask view.</p>
+<article ng-repeat="(id, q) in questions">
+  <h1><a href="#/questions/{{id}}">{{q.title}}</a></h1>
+  <p>
+    {{q.content}}
+  </p>
+  <a ng-click="delete(id)">delete</a>
+</article>
+<form ng-submit="ask()">
+  <input type="text" ng-model="question.title" />
+  <input type="text" ng-model="question.content" />
+  <input type="submit" value="Ask" />
+</form>
+Posts: {{ questions }}<br />
+Post: {{ question }}

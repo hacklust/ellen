@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('comments', function () {
+  .factory('comments', function ($firebase, firebaseRef) {
     return {
       get: function(pid) {
 

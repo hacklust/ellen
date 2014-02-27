@@ -1,0 +1,24 @@
+<p>This is the main view.</p>
+<article ng-repeat="(id, feed) in feeds">
+  <h1><a href="{{feed.type}}/{{id}}"></a>{{feed.title}}</a></h1>
+  <p>
+    {{feed.content}}
+  </p>
+  <blockquote>
+    {{feed.authorID}}
+  </blockquote>
+</article>
+
+<table>
+  <tr ng-repeat="(id, user) in users">
+    <td>{{id}}</td>
+    <td>{{user.uid}}</td>
+    <td>{{user.name}}</td>
+    <td><a href="http://facebook.com/{{user.id}}">Facebook</a></td>
+  </tr>
+</table>
+
+<button ng-click="create()">Create</button>
+<button ng-click="answer()">Answer</button>
+<button ng-click="write()">Write</button>
+<button ng-click="createUser()">Register User</button>

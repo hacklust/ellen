@@ -1,0 +1,6 @@
+<p>This is the final view.</p>
+<span ng-show="auth.user">
+  {{auth.user.name}} | <a href="#" ng-click="auth.$logout()">Logout</a>
+</span>
+<a href="#" ng-hide="auth.user" ng-click="auth.$login('facebook')">Login</a>
+<h2>Searched User</h2>

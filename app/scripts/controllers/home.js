@@ -1,22 +1,20 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('HomeCtrl', function ($scope, questions, answers, comments) {
+  .controller('HomeCtrl', function ($scope, questions, answers, comments, user) {
 
-    $scope.questions = questions.all();
+    $scope.questions = questions.all;
     $scope.question = '';
+
     $scope.ask = function() {
-      questions.add({
-          author_id: '1634354692',
-          title: 'some title',
-          content: 'asfdfsadf',
-          cat_id: 3
-        });
+      console.log(user.getCurrent());
+      var q = user.findById('1634354692');
+      // need on loaded for console.log, coz it's way too fast
+      q.$on('loaded', function() {
+        console.log(q.id);
+      });
     };
 
-    $scope.get = function() {
-      console.log(questions.get($scope.question));
-    };
 
     $scope.answer = function() {
       answers.add({

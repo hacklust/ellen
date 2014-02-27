@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('articles', function () {
+  .factory('articles', function ($firebase, firebaseRef) {
     var ref = firebaseRef('/articles');
     var articles = $firebase(ref);
     return {

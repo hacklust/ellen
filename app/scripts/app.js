@@ -12,7 +12,8 @@ angular.module('ellenApp', [
   'simpleLoginTools'
 ])
   .config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
+    
+    $urlRouterProvider.otherwise('/final');
 
     $stateProvider
       .state('home',{
@@ -21,10 +22,40 @@ angular.module('ellenApp', [
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl'
       });
+
+
+    $stateProvider
+      .state('ask', {
+        url: '/ask',
+        templateUrl: 'views/ask.html',
+        controller: 'AskCtrl'
+      });
+    $stateProvider
+      .state('questions', {
+        url: '/questions/:qid',
+        templateUrl: 'views/showquestion.html',
+        controller: 'QuestionViewCtrl'
+      });
+    
     $stateProvider
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       });
+
+    $stateProvider
+      .state('final',  {
+        url: '/final',
+        templateUrl: 'views/final.html',
+        controller: 'FinalCtrl'
+      });
+
+    $stateProvider
+      .state('main', {
+        url: '/main',
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      });
   });
+

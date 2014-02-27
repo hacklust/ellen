@@ -6,14 +6,12 @@ angular.module('ellenApp')
     $scope.questions = questions.all
     // single
     $scope.queston = {
-      authorID: '',
       category: '',
       content: '',
       title: ''
     };
     $scope.ask = function () {
       questions.create($scope.question);
-      
     };
 
     $scope.delete = function (id) {

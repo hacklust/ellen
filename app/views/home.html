@@ -1,10 +1,14 @@
-<p>This is the home view.</p>
-<button ng-click="ask()">ask</button>
+<form ng-submit="ask()">
+  <input type="text" ng-model="question.title" placeholder="title">
+  <textarea cols="30" rows="10" ng-model="question.content" placeholder="content"></textarea>
+  <input type="text" ng-model="question.category">
+  <input type="submit" value="Ask">
+</form>
 
-<section ng-repeat="(id, q) in questions">
+<section ng-show="questions" ng-repeat="(id, q) in questions">
   <article>
-    <h3><a href="#/questions/{{id}}">{{q.title}}</h3>
-    <b><a href="#/users/{{q.authorID}}">{{q.created}}</a></b>
+    <h3>Title:<a href="#/questions/{{id}}">{{q.title}}</a> </h3>
+    <b>author: <a href="#/users/{{q.author.id}}">{{q.author.name}}</a></b>
     <p>
       {{q.content}}
     </p>

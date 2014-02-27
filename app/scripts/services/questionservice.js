@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('questions', function ($firebase, firebaseRef, auth) {
-
+  .factory('QuestionService', function ($firebase, firebaseRef, auth) {
+    
       // ref questions
       var ref = firebaseRef('/questions');
       // get all questions
       var questions = $firebase(ref);
 
-
+      
       var auth = auth.getAuth();
       return {
         all: questions,
@@ -24,5 +24,4 @@ angular.module('ellenApp')
           return questions.$remove(id);
         }
       }
-
   });

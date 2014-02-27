@@ -1,30 +1,27 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('HomeCtrl', function ($scope, questions, answers, comments, user) {
+  .controller('HomeCtrl', function ($scope, UserService, QuestionService) {
 
-    $scope.questions = questions.all;
+    $scope.questions = QuestionService.all;
     $scope.question = '';
 
     $scope.ask = function() {
-      console.log(user.getCurrent());
-      var q = user.findById('1634354692');
+      // the real thing 
+      QuestionService.create($scope.question);
+      // reset question
+      $scope.question = '';
+      // testing below
+      var query = QuestionService.find('-JGo8dEqooyAn4vGbbko');
+      query.$on('loaded', function() {
+        console.log(query.title);
+      });
+
+      var q = UserService.findById('1634354692');
       // need on loaded for console.log, coz it's way too fast
       q.$on('loaded', function() {
         console.log(q.id);
       });
     };
 
-
-    $scope.answer = function() {
-      answers.add({
-        author_id: '1634354692',
-        question_id: '-JGgdSzFhHFeXmL6yPIr',
-        content: 'some answer on some question'
-      });
-    };
-
-    $scope.getAnswers = function(qID) {  
-      console.log(answers.get(qid));
-    }
   });

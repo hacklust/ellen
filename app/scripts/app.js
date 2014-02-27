@@ -13,7 +13,7 @@ angular.module('ellenApp', [
 ])
   .config(function ($stateProvider, $urlRouterProvider) {
     
-    $urlRouterProvider.otherwise('/final');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
       .state('home',{

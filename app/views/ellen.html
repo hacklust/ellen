@@ -15,12 +15,14 @@
     <!-- end content -->
       </ion-content>
       <ion-footer-bar class="bar bar-footer bar-light padding-left">
-      <form ng-submit="processRequest()" class="row">
-        <input id="query" name="query" type="text" placeholder="Say anything!" class="col padding-horizontal" ng-model="user.query" />
-        <input type="submit" value="Send" class="col col-25 button button-dark" />
-      </form>
-    </ion-footer-bar>
+        <form ng-submit="processRequest()" class="row">
+          <input id="query" name="query" type="text" placeholder="Say anything!" class="col padding-horizontal" ng-model="user.query" />
+          <input type="submit" value="Send" class="col col-25 button button-dark" />
+        </form>
+      </ion-footer-bar>
     </ion-view>
+
   </ion-pane>
+  
 <ng-include src="'views/inc/sidebar.html'"></ng-include>
 </ion-side-menus>

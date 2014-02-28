@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('UserService', function ($firebaseSimpleLogin, $firebase, firebaseRef, $rootScope) {
+  .factory('UserService', function ($firebaseSimpleLogin, $firebase, firebaseRef, $rootScope, Auth) {
     var ref = firebaseRef('/users');
     var users = $firebase(ref);
 
@@ -20,7 +20,7 @@ angular.module('ellenApp')
       var query = $firebase(ref);
       $rootScope.signedIn = $rootScope.currentUser !== null;
       query.$on('loaded', function () {
-        setCurrentUser(query.$getIndex()[0]);
+        setCurrentUser(Auth.getAuth().user.id);
       });
     });
 

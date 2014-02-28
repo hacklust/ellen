@@ -20,6 +20,10 @@ angular.module('ellenApp')
           FeedService.add(article);
           user.$child('articles').$child(ref.name()).$set({id: ref.name()});
         });
+      },
+      find: function(id) {
+        console.log(id);
+        return articles.$child(id);
       }
     };
   });

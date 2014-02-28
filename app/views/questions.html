@@ -1,0 +1,34 @@
+<div ng-repeat="(k,v) in questions">
+  <div class="list card">
+    <div class="item item-avatar">
+      <img ng-src="{{v.author.pic}}">
+      <h2>{{v.author.name}}</h2>
+      <p>{{v.created | date:'fullDate'}}</p>
+    </div>
+
+    <div class="item item-body">
+      <p>
+        {{v.content}}
+      </p>
+      <p>
+        <a href="#" class="subdued">12 Likes</a>
+        <a href="#" class="subdued">143 Answers</a>
+      </p>
+    </div>
+    
+    <div class="item tabs tabs-secondary tabs-icon-left">
+      <a class="tab-item" href="#">
+        <i class="icon ion-ios7-heart-outline"></i>
+        Like
+      </a>
+      <a class="tab-item" href="#">
+        <i class="icon ion-ios7-chatbubble-outline"></i>
+        Comment
+      </a>
+      <a class="tab-item" href="#">
+        <i class="icon ion-ios7-redo-outline"></i>
+        Share
+      </a>
+    </div>
+  </div>
+</div>

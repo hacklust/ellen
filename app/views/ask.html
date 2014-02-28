@@ -1,15 +1,29 @@
-<p>This is the ask view.</p>
-<article ng-repeat="(id, q) in questions">
-  <h1><a href="#/questions/{{id}}">{{q.title}}</a></h1>
-  <p>
-    {{q.content}}
-  </p>
-  <a ng-click="delete(id)">delete</a>
-</article>
-<form ng-submit="ask()">
-  <input type="text" ng-model="question.title" />
-  <input type="text" ng-model="question.content" />
-  <input type="submit" value="Ask" />
-</form>
-Posts: {{ questions }}<br />
-Post: {{ question }}
+<ion-side-menus >
+  <ion-pane ion-side-menu-content>
+    <ion-view  title="'Ask a Question'" left-buttons="leftButtons">
+      <ion-content has-header="true" padding="true">
+      <!-- start content -->
+      <form ng-submit="ask()">
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" ng-model="question.title" placeholder="Title">
+        </label>
+        <label class="item item-input">
+          <input type="text" ng-model="question.category" placeholder="Category">
+        </label>
+        <label class="item item-input">
+          <textarea placeholder="Type your question here" ng-model="question.content"></textarea>
+        </label>
+      </div>
+
+      <button type="submit" class="button button-positive">
+        Ask
+      </button>
+      </form>
+      <!-- end content -->
+      </ion-content>
+    </ion-view>
+  </ion-pane>
+<ng-include src="'views/inc/sidebar.html'" ></ng-include>
+</ion-side-menus>
+

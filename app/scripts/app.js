@@ -78,19 +78,18 @@ angular.module('ellenApp', [
 
     $stateProvider
       .state('questions', {
-        authRequired: true,
         url: '/questions',
         templateUrl: 'views/questions.html',
+        controller: 'QuestionsCtrl'
+      })
+      .state('ask', {
+        url: '/questions/ask',
+        templateUrl: 'views/ask.html',
         controller: 'QuestionsCtrl'
       })
       .state('questions.category',{
         url: '/question/:cat',
       })
-      .state('questions.ask', {
-        url: '/questions/ask',
-        templateUrl: 'views/ask.html',
-        controller: 'QuestionCtrl'
-      });
 
     // articles | similar to questions
 

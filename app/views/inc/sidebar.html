@@ -1,5 +1,5 @@
 <!-- Left menu -->
-<ion-side-menu side="left" >
+<ion-side-menu side="left" ng-controller='HomeCtrl'>
   <header class="bar bar-header bar-dark item-input-inset" id="menu-left" class="menu menu-left sidebar">
     <label class="item-input-wrapper search">
       <i class="icon ion-ios7-search placeholder-icon"></i>
@@ -10,7 +10,7 @@
     <list>
       <a class="item item-avatar" href="#/profile/1">
         <img src="img/9cde9068bea7cad540d57383fe4cbed0.jpeg">
-        <h2>Aaron Noel De Leon</h2>
+        <h2>{{user.name}}</h2>
         <p>View your profile</p>
       </a>
 

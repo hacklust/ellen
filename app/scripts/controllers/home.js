@@ -3,6 +3,8 @@
 angular.module('ellenApp')
   .controller('HomeCtrl', function ($scope, UserService, QuestionService, ArticleService, Auth, FeedService) {
 
+    $scope.user = UserService.getCurrent();
+
     $scope.questions = QuestionService.all;
     $scope.articles = ArticleService.all;
 

@@ -24,6 +24,12 @@ angular.module('ellenApp', [
         templateUrl: 'views/mobilehome.html',
         controller: 'HomeCtrl'
       });
+    $stateProvider
+      .state('ellen', {
+        url: '/ellen',
+        templateUrl: 'views/ellen.html',
+        controller: 'EllenCtrl'
+      });
 
     $stateProvider
       .state('users',{

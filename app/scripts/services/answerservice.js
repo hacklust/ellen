@@ -18,7 +18,7 @@ angular.module('ellenApp')
           user.$child('answers').$child(ref.name()).$set({id: ref.name(), postId: postId});
         });
       },
-      delete: function(post, comment, commentId, fbref) {
+      delete: function(post, comment, commentId) {
         var user = UserService.findById(comment.author.id);
         post.$child('comments').$remove(commentId).then(function(){
           user.$child('comments').$remove(commentId);
@@ -28,5 +28,5 @@ angular.module('ellenApp')
         console.log(questionId + ' : ' + answerId);
         return questions.$child(questionId).$child('answers').$child(answerId);
       },
-    }
+    };
   });

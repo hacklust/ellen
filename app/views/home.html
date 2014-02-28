@@ -1,9 +1,9 @@
 <a ng-click="logout()">Logout</a> | <a href="#/login">Login</a>
 <form ng-submit="ask()">
-  <input type="text" ng-model="question.title" placeholder="title">
-  <textarea cols="30" rows="10" ng-model="question.content" placeholder="content"></textarea>
-  <input type="text" ng-model="question.category">
-  <input type="submit" value="Ask">
+  <input type="text" ng-model="question.title" placeholder="title" class="form-control">
+  <textarea cols="30" rows="10" ng-model="question.content" placeholder="content" class="form-control"></textarea>
+  <input type="text" ng-model="question.category" class="form-control" placeholder="category">
+  <input type="submit" value="Ask" class="btn btn-primary">
 </form>
 
 <section ng-show="questions" ng-repeat="(id, q) in questions">
@@ -15,8 +15,20 @@
     </p>
   </article>
 </section>
-<input type="text" ng-model="question">
-<button ng-click="get()">get</button>
 
-<h1>answer</h1>
-<button ng-click="answer()">answer fucker!</button>
+<form ng-submit="write()">
+  <input type="text" ng-model="article.title" placeholder="title" class="form-control">
+  <textarea cols="30" rows="10" ng-model="article.content" placeholder="content" class="form-control"></textarea>
+  <input type="text" ng-model="article.category" class="form-control" placeholder="category">
+  <input type="submit" value="Write Article" class="btn btn-primary">
+</form>
+
+<section ng-show="articles" ng-repeat="(id, q) in articles">
+  <article>
+    <h3>Title:<a href="#/articles/{{id}}">{{q.title}}</a> </h3>
+    <b>author: <a href="#/users/{{q.author.id}}">{{q.author.name}}</a></b>
+    <p>
+      {{q.content}}
+    </p>
+  </article>
+</section>

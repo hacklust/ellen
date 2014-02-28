@@ -7,9 +7,9 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
 
   .factory('simpleLogin', function($rootScope, $firebaseSimpleLogin, firebaseRef, $timeout) {
     function getPicURL(id, large) {
-    return "https://graph.facebook.com/" + (id) +
-           "/picture/?type=" + (large ? "large" : "square") +
-           "&return_ssl_resources=1";
+      return 'https://graph.facebook.com/' + (id) +
+             '/picture/?type=' + (large ? 'large' : 'square') +
+             '&return_ssl_resources=1';
     }
 
     function assertAuth() {
@@ -46,7 +46,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
 
         auth.$login(provider, {rememberMe: true}).then(function(user) {
           var userRef = firebaseRef('users/' + user.id);
-          userRef.once("value", function(snapshot){
+          userRef.once('value', function(snapshot){
             var info = {};
             var val = snapshot.val();
             if (!val) {

@@ -13,10 +13,10 @@ angular.module('ellenApp')
     $scope.addComment = function(){
       CommentService.add($scope.answer, $stateParams.id, $scope.comment);
       $scope.comment = '';
-    }
+    };
 
     $scope.removeComment = function(comment, commentId) {
       CommentService.delete($scope.answer, comment, commentId);
-    }
+    };
 
   });

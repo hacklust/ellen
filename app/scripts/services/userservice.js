@@ -8,15 +8,15 @@ angular.module('ellenApp')
     function findById(id) {
       var user = users.$child(id);
       return user;
-    };
+    }
 
     function setCurrentUser(UserId) {
       $rootScope.currentUser = findById(UserId);
-    };
+    }
 
     // persist on refresh....
 
-    $rootScope.$on('$firebaseSimpleLogin:login', function (e, authUser) {
+    $rootScope.$on('$firebaseSimpleLogin:login', function () {
       var query = $firebase(ref);
       $rootScope.signedIn = $rootScope.currentUser !== null;
       query.$on('loaded', function () {

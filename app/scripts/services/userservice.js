@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('UserService', function ($firebaseSimpleLogin, $firebase, firebaseRef, Auth, $rootScope) {
+  .factory('UserService', function ($firebaseSimpleLogin, $firebase, firebaseRef, $rootScope) {
     var ref = firebaseRef('/users');
     var users = $firebase(ref);
 
@@ -28,9 +28,6 @@ angular.module('ellenApp')
       findById: function(id) {
         var user = users.$child(id);
         return user;
-      },
-      getAuth: function() {
-        return Auth.getAuth();
       },
       getCurrent: function() {
         return $rootScope.currentUser;

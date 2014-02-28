@@ -19,6 +19,12 @@ angular.module('ellenApp')
           user.$child('questions').$child(ref.name()).$set({id: ref.name()});
         });
 
+      },
+      find: function(id) {
+        return questions.$child(id);
+      },
+      delete: function(id) {
+        return questions.$remove(id);
       }
 
     };

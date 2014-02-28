@@ -14,6 +14,10 @@ angular.module('ellenApp', [
   .config(function ($stateProvider, $urlRouterProvider) {
 
     
+    // .when('/user', {
+    //   templateUrl: 'views/user.html',
+    //   controller: 'UserCtrl'
+    // })
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -22,6 +26,13 @@ angular.module('ellenApp', [
         url: '/',
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl'
+      });
+
+    $stateProvider
+      .state('users',{
+        url: '/users/:id',
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl'
       });
 
     $stateProvider
@@ -37,34 +48,12 @@ angular.module('ellenApp', [
         templateUrl: 'views/answerview.html',
         controller: 'AnswerViewCtrl'
       });
-
-    $stateProvider
-      .state('ask', {
-        url: '/ask',
-        templateUrl: 'views/ask.html',
-        controller: 'AskCtrl'
-      });
-
     
     $stateProvider
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
-      });
-
-    $stateProvider
-      .state('final',  {
-        url: '/final',
-        templateUrl: 'views/final.html',
-        controller: 'FinalCtrl'
-      });
-
-    $stateProvider
-      .state('main', {
-        url: '/main',
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
       });
   });
 

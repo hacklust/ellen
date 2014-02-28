@@ -1,20 +1,26 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('HomeCtrl', function ($scope, UserService, QuestionService, ArticleService, Auth) {
+  .controller('HomeCtrl', function ($scope, UserService, QuestionService, ArticleService, Auth, FeedService) {
 
     $scope.questions = QuestionService.all;
     $scope.articles = ArticleService.all;
 
+    $scope.feeds = FeedService.all;
+
     $scope.article = '';
     $scope.question = '';
     
-     $scope.rightButtons = [
+    $scope.toggleMenu = function() {
+      $scope.sideMenuController.toggleLeft();
+    };
+    
+    $scope.leftButtons = [
       {
         type: 'button-clear',
-        content: '<i class="icon ion-ios7-compose-outline"></i>',
+        content: '<i class="icon ion-navicon"></i>',
         tap: function(e) {
-          $scope.newQuestion();
+          $scope.toggleMenu();
         }
       }
     ];

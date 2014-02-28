@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('ArticleService', function ($firebase, firebaseRef, UserService) {
+  .factory('ArticleService', function ($firebase, firebaseRef, UserService, FeedService) {
     // ref questions
     var ref = firebaseRef('/articles');
     // get all questions
@@ -14,8 +14,10 @@ angular.module('ellenApp')
 
         article.created = Firebase.ServerValue.TIMESTAMP;
         article.author = {id: user.id, name: user.name};
+        article.type = 'article';
 
         articles.$add(article).then(function(ref){
+          FeedService.add(article);
           user.$child('articles').$child(ref.name()).$set({id: ref.name()});
         });
       }

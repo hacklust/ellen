@@ -14,11 +14,7 @@ angular.module('ellenApp', [
 ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
-    
-    // .when('/user', {
-    //   templateUrl: 'views/user.html',
-    //   controller: 'UserCtrl'
-    // })
+
     $urlRouterProvider.otherwise('/');
 
     $stateProvider

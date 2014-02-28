@@ -1,12 +1,10 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('HomeCtrl', function ($scope, UserService, QuestionService, ArticleService, Auth, FeedService) {
+  .controller('HomeCtrl', function ($scope, UserService, Auth, FeedService) {
 
     $scope.user = UserService.getCurrent();
 
-    $scope.questions = QuestionService.all;
-    $scope.articles = ArticleService.all;
 
     $scope.feeds = FeedService.all;
 

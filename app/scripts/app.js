@@ -25,10 +25,29 @@ angular.module('ellenApp', [
         controller: 'HomeCtrl'
       });
     $stateProvider
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      });
+    $stateProvider
       .state('ellen', {
         url: '/ellen',
         templateUrl: 'views/ellen.html',
         controller: 'EllenCtrl'
+      });
+    $stateProvider
+      .state('about', {
+        url: '/about',
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      });
+
+    $stateProvider
+      .state('report', {
+        url: '/report',
+        templateUrl: 'views/report.html',
+        controller: 'ReportCtrl'
       });
 
     $stateProvider
@@ -52,11 +71,5 @@ angular.module('ellenApp', [
         controller: 'AnswerViewCtrl'
       });
     
-    $stateProvider
-      .state('login', {
-        url: '/login',
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-      });
   });
 

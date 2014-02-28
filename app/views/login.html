@@ -1,22 +1,10 @@
 <!-- wait for auth to resolve (avoid flashing login page before redirect -->
-<div ng-cloak class="row">
-    <div class="col-md-12">
-
-        <!-- examples for fun and profit -->
-        
-        <div ng-show-auth="logout">Logged out</div>
-        <div ng-show-auth="error">{{auth.error}}</div>
-        <fieldset>
-            <legend>Oauth</legend>
-            <p>
-                <button class="btn btn-lg btn-primary" ng-click="login('facebook')">Facebook</button>
-            </p>
-        </fieldset>
-
-        
-
-        <br />
-        <div ng-show="err" class="alert alert-danger"><strong>{{err}}</strong></div>
-
-    </div>
-</div>
+<ion-view title="'Welcome to Ellen'">
+    <ion-content class="center login" has-bouncing="true" has-header="true">
+        <img class="full-image logo" src="images/logo.png" />
+        <button ng-click="login('facebook')" class="button button-dark-blue icon-left">
+            <i class="icon ion-social-facebook padding-horizontal"></i>
+            Login via Facebook
+        </button>
+    </ion-content>
+</ion-view>

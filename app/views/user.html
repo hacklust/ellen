@@ -1,25 +1,145 @@
-<div class="container profile">
-  <div class="row">
-    <div class="col-sm-1">
-      <img ng-src="{{user.pic}}" class="prof-img" />
-    </div>
- 
-    <div class="col-sm-10">
-      <span class="name">
-        {{ user.name }}
-        {{ count }}
-      </span>
-    </div>
-    <ul>
-      <li>Questions: {{questions}}</li>
-      <li>Answers: {{answers}}</li>
-      <li>Articles: {{articles}}</li>
-      <li>Comments: {{comments}}</li>
-      
-    </ul>
- 
-  </div>
-  
- 
-</div>
- 
+<ion-side-menus >
+  <ion-pane ion-side-menu-content>
+    <ion-view title="'Profile'" left-buttons="leftButtons">
+      <ion-content has-bouncing="true" class="profile" has-header="true">
+
+      <div class="list card card-full-width">
+        <div class="item item-body center">
+          <img ng-src="{{user.pic}}" class="circle">
+          <h2>{{ user.name }}</h2>
+          <p>{{ user.location.name }}</p>
+        </div>
+      </div>
+
+      <div class="card card-full-width">
+        <a class="item item-icon-left dark-bg light" href="#">
+          <i class="icon ion-ios7-help-outline energized"></i>
+          {{questionsCount}} Questions
+        </a>
+      </div>
+
+      <div class="card">
+        <div class="item item-body">
+          <p>
+            What makes you fall in love? As smart women, you should know your rights especially the meaning
+            of Lorem ipsum dolor sit ametin..
+          </p>
+          <p>
+            <a href="#" class="subdued">12 Likes</a>
+            <a href="#" class="subdued">143 Answers</a>
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="item item-body">
+          <p>
+            What makes you fall in love?
+          </p>
+          <p>
+            <a href="#" class="subdued">12 Likes</a>
+            <a href="#" class="subdued">13 Answers</a>
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="item item-body">
+          <p>
+            You should know your rights especially the meaning
+            of Lorem ipsum dolor sit ametin..
+          </p>
+          <p>
+            <a href="#" class="subdued">2 Likes</a>
+            <a href="#" class="subdued">43 Answers</a>
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="item item-body">
+          <p>
+            What makes you fall in ametin..
+          </p>
+          <p>
+            <a href="#" class="subdued">12 Likes</a>
+            <a href="#" class="subdued">13 Answers</a>
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="item item-body">
+          <p>
+            What now?
+          </p>
+          <p>
+            <a href="#" class="subdued">1 Like</a>
+            <a href="#" class="subdued">13 Answers</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="card card-full-width">
+        <a class="item item-icon-left dark-bg light" href="#">
+          <i class="icon ion-ios7-checkmark-outline energized"></i>
+          32 Answers
+        </a>
+      </div>
+
+      <div class="card">
+        <div class="item item-body">
+          <p>
+            What makes you fall in mart women, you should know your rights especially the meaning
+            of Lorem ipsum dolor sit ametin..
+          </p>
+          <div class="card">
+            <div class="item item-icon-left">
+              <i class="icon ion-help gray"></i> 
+              <p>What are the chaldskjfei weir lksdf sldui?</p>
+
+            </div>
+          </div>
+          <p>
+            <a href="#" class="subdued">12 Likes</a>
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="item item-body">
+          <p>
+            What makes you fall in mart women, you should know your rights especially the meaning
+            of Lorem ipsum dolor sit ametin..
+          </p>
+          <div class="card">
+            <div class="item item-icon-left">
+              <i class="icon ion-help gray"></i> 
+              <p>What are the chaldskjfei weir lksdf sldui?</p>
+
+            </div>
+          </div>
+          <p>
+            <a href="#" class="subdued">12 Likes</a>
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="item item-body">
+          <p>
+            What makes you fall in mart women, you should know your rights especially the meaning
+            of Lorem ipsum dolor sit ametin..
+          </p>
+          <div class="card">
+            <div class="item item-icon-left">
+              <i class="icon ion-help gray"></i> 
+              <p>What are the chaldskjfei weir lksdf sldui?</p>
+
+            </div>
+          </div>
+          <p>
+            <a href="#" class="subdued">12 Likes</a>
+          </p>
+        </div>
+      </div>
+
+      </ion-content>
+    </ion-view>
+  </ion-pane>
+<ng-include src="'views/inc/sidebar.html'" ></ng-include>
+</ion-side-menus>

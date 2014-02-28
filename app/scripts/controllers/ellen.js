@@ -13,6 +13,20 @@ angular.module('ellenApp')
       content: "Hi there! I\'m Ellen. You can tell me anything."
     }];
 
+    $scope.toggleMenu = function() {
+      $scope.sideMenuController.toggleLeft();
+    };
+    
+    $scope.leftButtons = [
+      {
+        type: 'button-clear',
+        content: '<i class="icon ion-navicon"></i>',
+        tap: function(e) {
+          $scope.toggleMenu();
+        }
+      }
+    ];
+
     $scope.processRequest = function() {
       if ($scope.conversation.length > 0 &&
           $scope.conversation[$scope.conversation.length - 1].type === 'idle'

@@ -3,20 +3,22 @@
 angular.module('ellenApp')
   .factory('AnswerService', function ($firebase, firebaseRef, UserService) {
 
-    var ref = firebaseRef('/questions');
+    var ref = firebaseRef('/feeds/questions/');
     var questions = $firebase(ref);
 
     return {
-      add: function(post, postId, answer) {
+      add: function(question, questionId, answer) {
+
         var user = UserService.getCurrent();
 
         answer.created = Firebase.ServerValue.TIMESTAMP;
-        answer.author = {id: user.id, name: user.name};
-        answer.postId = postId;
-        
-        post.$child('answers').$add(answer).then(function(ref){
-          user.$child('answers').$child(ref.name()).$set({id: ref.name(), postId: postId});
+        answer.author = {id: user.id, name: user.name, pic: user.pic};
+        answer.questionId = questionId;
+
+        question.$child('answers').$add(answer).then(function(ref){
+          user.$child('answers').$child(ref.name()).$set({id: ref.name(), questionId: questionId});
         });
+
       },
       delete: function(post, comment, commentId) {
         var user = UserService.findById(comment.author.id);

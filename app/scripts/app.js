@@ -24,6 +24,7 @@ angular.module('ellenApp', [
         templateUrl: 'views/mobilehome.html',
         controller: 'HomeCtrl'
       });
+
     $stateProvider
       .state('login', {
         url: '/login',
@@ -51,6 +52,32 @@ angular.module('ellenApp', [
       });
 
     $stateProvider
+      .state('questions', {
+        url: '/questions/:cat',
+        templateUrl: 'views/questionsFilterByCategory.html',
+        controller: 'QuestionCtrl'
+      })
+      .state('ask', {
+        url: '/ask',
+        templateUrl: 'views/ask.html',
+        controller: 'QuestionCtrl'
+      });
+
+    $stateProvider
+      .state('articles', {
+        url: '/articles/:cat',
+        templateUrl: 'views/articlesFilterByCategory.html',
+        controller: 'ArticlesViewCtrl'
+      });
+      
+    $stateProvider
+      .state('article', {
+        url: '/article/:id',
+        templateUrl: 'views/articleView.html',
+        controller: 'ArticleViewCtrl'
+      });
+
+    $stateProvider
       .state('users',{
         url: '/users/:id',
         templateUrl: 'views/user.html',
@@ -58,8 +85,8 @@ angular.module('ellenApp', [
       });
 
     $stateProvider
-      .state('questions',{
-        url: '/questions/:id',
+      .state('question',{
+        url: '/question/:id',
         templateUrl: 'views/showquestion.html',
         controller: 'QuestionViewCtrl'
       });

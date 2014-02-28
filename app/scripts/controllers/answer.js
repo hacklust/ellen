@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('AnswerViewCtrl', function ($scope, $stateParams, AnswerService, UserService, CommentService) {
+  .controller('AnswerCtrl', function ($scope, $stateParams, AnswerService, UserService, CommentService) {
     $scope.questionId = $stateParams.qid;
     $scope.answerId = $stateParams.id;
 

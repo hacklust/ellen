@@ -8,7 +8,6 @@ angular.module('ellenApp')
 
     $scope.login = function(service) {
       simpleLogin.login(service, function(err, user) {
-        UserService.setCurrent(user.id);
         $scope.err = err? err + '' : null;
       });
     };

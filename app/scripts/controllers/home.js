@@ -5,7 +5,6 @@ angular.module('ellenApp')
 
     $scope.user = UserService.getCurrent();
 
-
     $scope.feeds = FeedService.all;
 
     $scope.article = '';

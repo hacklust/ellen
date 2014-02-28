@@ -9,7 +9,8 @@ angular.module('ellenApp', [
   'firebase',
   'angularfire.firebase',
   'angularfire.login',
-  'simpleLoginTools'
+  'simpleLoginTools',
+  'ionic'
 ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -24,7 +25,7 @@ angular.module('ellenApp', [
       .state('home',{
         // authRequired: true, // add this to routes that need authentication :D
         url: '/',
-        templateUrl: 'views/home.html',
+        templateUrl: 'views/mobilehome.html',
         controller: 'HomeCtrl'
       });
 

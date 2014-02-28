@@ -9,6 +9,16 @@ angular.module('ellenApp')
     $scope.article = '';
     $scope.question = '';
     
+     $scope.rightButtons = [
+      {
+        type: 'button-clear',
+        content: '<i class="icon ion-ios7-compose-outline"></i>',
+        tap: function(e) {
+          $scope.newQuestion();
+        }
+      }
+    ];
+
     $scope.logout = function() {
       Auth.logout();
     };

@@ -7,33 +7,30 @@
         </div>
         <div class="item item-avatar">
           <img ng-src="images/319885_448812831809748_686101519_n.jpg">
-          <h2>{{currentArticle}}</h2>
-          <p>Philippine Commission on Women</p>
+          <h2>{{article.title}}</h2>
+          <p>{{article.author.name}}</p>
         </div>
         <div class="item item-body">
           <p>
-            ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur 
-          </p>
-          <p>
-            leasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain s
-          </p>
-          <p>
-            occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est
+            {{article.content}}
           </p>
         </div>
+
+        
         <div class="item tabs tabs-secondary tabs-icon-left">
           <a class="tab-item" href="#">
             <i class="icon ion-ios7-heart-outline"></i>
-            24 Likes
+            {{article.score || 0}} <ng-pluralize count="article.score" when="{'0': 'Likes', '1' : 'Like', 'other' : 'Likes'}"></ng-pluralize></a>
           </a>
-          <a class="tab-item" href="#">
+          <!-- <a class="tab-item" href="#">
             <i class="icon ion-ios7-chatbubble-outline"></i>
             3 Comments
+            <a href="#" class="subdued">{{v.commentCount}} <ng-pluralize count="v.answerCount" when="{'0': 'No answer yet', '1' : 'Answer', 'other' : 'Answers'}"></ng-pluralize></a>
           </a>
           <a class="tab-item" href="#">
             <i class="icon ion-ios7-redo-outline"></i>
             Share
-          </a>
+          </a> -->
         </div>
         <div class="item item-avatar comment">
           <img ng-src="images/370796_1634354692_1856805680_q.jpg">

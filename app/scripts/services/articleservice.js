@@ -24,7 +24,7 @@ angular.module('ellenApp')
       },
       find: function(id) {
         console.log(id);
-        return articles.$child(id);
+        return feeds.$child(id);
       }
     };
   });

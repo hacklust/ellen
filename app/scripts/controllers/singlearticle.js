@@ -3,7 +3,7 @@
 angular.module('ellenApp')
   .controller('SingleArticleCtrl', function ($scope, $stateParams, ArticleService) {
 
-    $scope.currentArticle = ArticleService.find($stateParams.id);
+    $scope.article = ArticleService.find($stateParams.id);
     $scope.id = $stateParams.id;
 
     

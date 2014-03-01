@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('ArticlesCtrl', function ($scope, ArticleService, FeedService) {
+  .controller('ArticlesCtrl', function ($scope, ArticleService, FeedService, $stateParams) {
 
     $scope.article ={};
 
@@ -23,4 +23,17 @@ angular.module('ellenApp')
         }
       }
     ];
+
+    $scope.question = QuestionService.find($stateParams.id);
+    $scope.upVoteFeed = function (feedId, upVoted) {
+      if (upVoted) {
+        FeedService.clearvote(feedId, upVoted);
+      } else {
+        FeedService.upvote(feedId);
+      }
+    }
+
+    $scope.upVoted  = function(feed) {
+      return FeedService.upvoted(feed);
+    }
   });

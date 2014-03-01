@@ -24,7 +24,6 @@ angular.module('ellenApp')
       }
     ];
 
-    $scope.question = QuestionService.find($stateParams.id);
     $scope.upVoteFeed = function (feedId, upVoted) {
       if (upVoted) {
         FeedService.clearvote(feedId, upVoted);

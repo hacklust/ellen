@@ -1,29 +1,26 @@
 <ion-side-menus >
   <ion-pane ion-side-menu-content>
-    <ion-view  title="'News Feed'" left-buttons="leftButtons">
+    <ion-view  title="'Articles '" left-buttons="leftButtons">
       <ion-content has-header="true" padding="true">
       <!-- start content -->
-      <div ng-repeat="(k,v) in articles">
-        <div class="list card article-card">
+      <div ng-repeat="(k,v) in questions">
+        <div class="list card">
           <div class="item item-avatar">
             <img ng-src="{{v.author.pic}}">
-            <h2><a href="#/article/{{k}}">{{v.title}}</a></h2>
-            <p>{{v.author.name}}</p>
+            <h2>{{v.author.name}}</h2>
+            <p>{{v.created | date:'fullDate'}}</p>
           </div>
-
-          <img class="item item-image full-image" ng-src="images/banner.jpg">
 
           <div class="item item-body">
             <p>
               {{v.content}}
             </p>
             <p>
-              <a href="#" class="subdued">2 Likes</a>
-              <a href="#" class="subdued">3 Comments</a>
+              <a href="#" class="subdued">{{v.score || 0}} <ng-pluralize count="question.score" when="{'0': 'Likes', '1' : 'Like', 'other' : 'Likes'}"></ng-pluralize></a>
+              <a href="#" class="subdued">143 Answers</a>
             </p>
           </div>
-
-
+          
           <div class="item tabs tabs-secondary tabs-icon-left">
             <a class="tab-item" href="#">
               <i class="icon ion-ios7-heart-outline"></i>
@@ -39,7 +36,7 @@
             </a>
           </div>
         </div>
-      </div ng-repeat>
+      </div>
     <!-- end content -->
       </ion-content>
     </ion-view>

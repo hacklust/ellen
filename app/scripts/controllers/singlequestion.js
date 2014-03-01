@@ -18,11 +18,11 @@ angular.module('ellenApp')
     ];
 
     $scope.question = QuestionService.find($stateParams.id);
-    $scope.upVoteFeed = function (feedId, upVoted) {
+    $scope.upVoteFeed = function (upVoted) {
       if (upVoted) {
-        FeedService.clearvote(feedId, upVoted);
+        FeedService.clearvote($stateParams.id, upVoted);
       } else {
-        FeedService.upvote(feedId);
+        FeedService.upvote($stateParams.id);
       }
     }
 

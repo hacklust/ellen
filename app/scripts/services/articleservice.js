@@ -13,7 +13,7 @@ angular.module('ellenApp')
         var user = UserService.getCurrent();
 
         article.created = Firebase.ServerValue.TIMESTAMP;
-        article.author = {id: user.id, name: user.name};
+        article.author = {id: user.id, name: user.name, pic: user.pic};
         article.type = 'article';
 
         feeds.$add(article).then(function(ref){

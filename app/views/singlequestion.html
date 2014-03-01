@@ -15,13 +15,13 @@
             {{question.content}}
           </p>
           <p>
-            <a href="#" class="subdued">{{question.score || 0}} <ng-pluralize count="question.score" when="{'0': 'Likes', '1' : 'Like', 'other' : 'Likes'}"></ng-pluralize></a>
-            <a href="#" class="subdued">143 Answers</a>
+            <a href="#" class="subdued">{{question.score}} <ng-pluralize count="question.score" when="{'0': 'Likes', '1' : 'Like', 'other' : 'Likes'}"></ng-pluralize></a>
+            <a href="#" class="subdued">{{question.answerCount}} <ng-pluralize count="question.answerCount" when="{'0': 'No answer yet', '1' : 'Answer', 'other' : 'Answers'}"></ng-pluralize></a>
           </p>
         </div>
         
         <div class="item tabs tabs-secondary tabs-icon-left">
-          <a class="tab-item" href="" ng-hide="downvoted(v)" ng-click="upVoteFeed(upVoted(question))">
+          <a class="tab-item" href="" ng-click="upVoteFeed(upVoted(question))">
             <i class="icon ion-ios7-heart-outline"></i>
             Like
           </a>
@@ -35,6 +35,30 @@
           </a>
         </div>
       </div>
+      <div ng-show="question.answers">
+        <h2>Answers:</h2>
+        <div ng-repeat="(answerId, answer) in question.answers">
+          <div class="card">
+            <div class="item item-body">
+              <p>
+                {{answer.content}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form ng-submit="answerQuestion()">
+      <div class="list">
+        <label class="item item-input">
+          <textarea style="height:100px" placeholder="Type your answer here" ng-model="answer.content"></textarea>
+        </label>
+      </div>
+
+      <button type="submit" class="button button-positive">
+        Submit Answer
+      </button>
+      </form>
     <!-- end content -->
       </ion-content>
     </ion-view>

@@ -10,8 +10,9 @@ angular.module('ellenApp')
       return user;
     }
 
-    function setCurrentUser(UserId) {
-      $rootScope.currentUser = findById(UserId);
+    function setCurrentUser(userId) {
+      $rootScope.currentUser = findById(userId);
+      
     }
 
     // persist on refresh....
@@ -20,6 +21,7 @@ angular.module('ellenApp')
       var query = $firebase(ref);
       $rootScope.signedIn = $rootScope.currentUser !== null;
       query.$on('loaded', function () {
+        console.log(Auth.getAuth());
         setCurrentUser(Auth.getAuth().user.id);
       });
     });

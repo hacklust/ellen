@@ -1,7 +1,15 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('SingleQuestionCtrl', function ($scope, $stateParams, QuestionService, FeedService) {
+  .controller('SingleQuestionCtrl', function ($scope, $stateParams, QuestionService, FeedService, AnswerService) {
+
+    $scope.question = QuestionService.find($stateParams.id);
+    $scope.answer = {};
+
+    $scope.answerQuestion = function() {
+      AnswerService.add($scope.question, $stateParams.id, $scope.answer);
+      $scope.answer = {};
+    }
 
     $scope.toggleMenu = function() {
       $scope.sideMenuController.toggleLeft();
@@ -17,7 +25,7 @@ angular.module('ellenApp')
       }
     ];
 
-    $scope.question = QuestionService.find($stateParams.id);
+    
     $scope.upVoteFeed = function (upVoted) {
       if (upVoted) {
         FeedService.clearvote($stateParams.id, upVoted);

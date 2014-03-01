@@ -3,8 +3,6 @@
 angular.module('ellenApp')
   .factory('AnswerService', function ($firebase, firebaseRef, UserService) {
 
-    var ref = firebaseRef('/feeds/questions/');
-    var questions = $firebase(ref);
 
     return {
       add: function(question, questionId, answer) {
@@ -16,6 +14,12 @@ angular.module('ellenApp')
         answer.questionId = questionId;
 
         question.$child('answers').$add(answer).then(function(ref){
+          question.$child('answerCount').$transaction(function(count){
+              if(!count) {
+                return 1;
+              }
+              return count + 1;
+            });
           user.$child('answers').$child(ref.name()).$set({id: ref.name(), questionId: questionId});
         });
 

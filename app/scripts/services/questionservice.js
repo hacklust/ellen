@@ -16,6 +16,7 @@ angular.module('ellenApp')
 
         question.created = Firebase.ServerValue.TIMESTAMP;
         question.author = {id: user.id, name: user.name, pic: user.pic};
+        question.score = 0;
         question.type = 'question';
         
         feeds.$add(question).then(function(ref){

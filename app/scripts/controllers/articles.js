@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('ArticlesCtrl', function ($scope, ArticleService, FeedService, $stateParams) {
+  .controller('ArticlesCtrl', function ($scope, ArticleService, FeedService) {
+
+    $scope.articles = ArticleService.all;
 
     $scope.article ={};
 
@@ -24,7 +26,6 @@ angular.module('ellenApp')
       }
     ];
 
-    $scope.question = QuestionService.find($stateParams.id);
     $scope.upVoteFeed = function (feedId, upVoted) {
       if (upVoted) {
         FeedService.clearvote(feedId, upVoted);

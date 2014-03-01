@@ -102,6 +102,7 @@ angular.module('ellenApp', [
       
     $stateProvider
       .state('articles', {
+        authRequired: true,
         url: '/articles',
         templateUrl: 'views/articles.html',
         controller: 'ArticlesCtrl'

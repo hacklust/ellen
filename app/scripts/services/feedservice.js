@@ -12,9 +12,10 @@ angular.module('ellenApp')
       find: function(feedId) {
         return feeds.$child(feedId);
       },
-      upvote: function(feedId) {
+      upvote: function(feedId, answer) {
         if(UserService.signedIn()){
           var user = UserService.getCurrent();
+
           var feed = feeds.$child(feedId);
 
           feed.$child('upvotes').$child(user.id).$set(user.id).then(function(){

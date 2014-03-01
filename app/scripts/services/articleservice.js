@@ -5,7 +5,7 @@ angular.module('ellenApp')
     // ref questions
     var ref = firebaseRef('/feeds');
     // get all questions
-    var feeds = $firebase(ref);
+    var feeds = $firebase(ref.startAt('article').endAt('article'));
 
     return {
       all: feeds,
@@ -14,6 +14,7 @@ angular.module('ellenApp')
 
         article.created = Firebase.ServerValue.TIMESTAMP;
         article.author = {id: user.id, name: user.name, pic: user.pic};
+        article.score = 0;
         article.type = 'article';
 
         feeds.$add(article).then(function(ref){

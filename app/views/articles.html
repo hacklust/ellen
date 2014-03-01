@@ -3,7 +3,7 @@
     <ion-view  title="'Articles '" left-buttons="leftButtons">
       <ion-content has-header="true" padding="true">
       <!-- start content -->
-      <div ng-repeat="(k,v) in questions">
+      <div ng-repeat="(k,v) in articles">
         <div class="list card">
           <div class="item item-avatar">
             <img ng-src="{{v.author.pic}}">
@@ -16,7 +16,7 @@
               {{v.content}}
             </p>
             <p>
-              <a href="#" class="subdued">{{v.score || 0}} <ng-pluralize count="question.score" when="{'0': 'Likes', '1' : 'Like', 'other' : 'Likes'}"></ng-pluralize></a>
+              <a href="#" class="subdued">{{v.score || 0}} <ng-pluralize count="article.score" when="{'0' : 'Likes' , '1' : 'Like', 'other' : 'Likes'}">Likes</ng-pluralize></a>
               <a href="#" class="subdued">143 Answers</a>
             </p>
           </div>

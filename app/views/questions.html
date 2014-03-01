@@ -16,8 +16,8 @@
               {{v.content}}
             </p>
             <p>
-              <a href="#" class="subdued">{{v.score || 0}} <ng-pluralize count="question.score" when="{'0': 'Likes', '1' : 'Like', 'other' : 'Likes'}"></ng-pluralize></a>
-              <a href="#" class="subdued">143 Answers</a>
+              <a href="#" class="subdued">{{v.score || 0}} <ng-pluralize count="v.score" when="{'0': 'Likes', '1' : 'Like', 'other' : 'Likes'}"></ng-pluralize></a>
+              <a href="#" class="subdued">{{v.answerCount}} <ng-pluralize count="v.answerCount" when="{'0': 'No answer yet', '1' : 'Answer', 'other' : 'Answers'}"></ng-pluralize></a>
             </p>
           </div>
           

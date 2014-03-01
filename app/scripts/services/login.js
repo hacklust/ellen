@@ -55,11 +55,11 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
               info = {
                 id: user.id,
                 name: user.name,
-                location: user.location,
                 gender: user.gender,
                 pic: getPicURL(user.id),
                 dateRegistered: Firebase.ServerValue.TIMESTAMP
               };
+              console.log('asa ilalim na nito yung set');
               userRef.set(info);
             } else {
               info = val;

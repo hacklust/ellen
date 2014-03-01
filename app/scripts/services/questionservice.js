@@ -3,29 +3,30 @@
 angular.module('ellenApp')
   .factory('QuestionService', function ($firebase, firebaseRef, UserService) {
     // ref questions
-    var ref = firebaseRef('/feeds/questions');
+    var ref = firebaseRef('/feeds');
     // get all questions
-    var questions = $firebase(ref);
+    var feeds = $firebase(ref);
 
     return {
-      all: questions,
+      all: feeds,
       add: function(question, category) {
         var user = UserService.getCurrent();
 
         question.created = Firebase.ServerValue.TIMESTAMP;
-        question.author = {id: user.id, name: user.name};
+        question.author = {id: user.id, name: user.name, pic: user.pic};
         question.category = category;
+        question.type = 'question';
         
-        questions.$add(question).then(function(ref){
-          user.$child('questions').$child(ref.name()).$set({id: ref.name()});
+        feeds.$add(question).then(function(ref){
+          user.$child('questions').$set({id: ref.name()});
         });
 
       },
       find: function(id) {
-        return questions.$child(id);
+        return feeds.$child(id);
       },
       delete: function(id) {
-        return questions.$remove(id);
+        return feeds.$remove(id);
       }
 
     };

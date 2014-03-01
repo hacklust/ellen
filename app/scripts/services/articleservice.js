@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('ArticleService', function ($firebase, firebaseRef, UserService, FeedService) {
+  .factory('ArticleService', function ($firebase, firebaseRef, UserService) {
     // ref questions
-    var ref = firebaseRef('/articles');
+    var ref = firebaseRef('/feeds');
     // get all questions
-    var articles = $firebase(ref);
+    var feed = $firebase(ref);
 
     return {
-      all: articles,
+      all: feeds,
       add: function(article) {
         var user = UserService.getCurrent();
 
@@ -16,8 +16,7 @@ angular.module('ellenApp')
         article.author = {id: user.id, name: user.name};
         article.type = 'article';
 
-        articles.$add(article).then(function(ref){
-          FeedService.add(article);
+        feeds.$add(article).then(function(ref){
           user.$child('articles').$child(ref.name()).$set({id: ref.name()});
         });
       },

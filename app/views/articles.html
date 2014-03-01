@@ -1,0 +1,49 @@
+<ion-side-menus >
+  <ion-pane ion-side-menu-content>
+    <ion-view  title="'News Feed'" left-buttons="leftButtons">
+      <ion-content has-header="true" padding="true">
+      <!-- start content -->
+      <div ng-repeat="(k,v) in articles">
+        <div class="list card article-card">
+          <div class="item item-avatar">
+            <img ng-src="{{v.author.pic}}">
+            <h2><a href="#/article/{{k}}">{{v.title}}</a></h2>
+            <p>{{v.author.name}}</p>
+          </div>
+
+          <img class="item item-image full-image" ng-src="images/banner.jpg">
+
+          <div class="item item-body">
+            <p>
+              {{v.content}}
+            </p>
+            <p>
+              <a href="#" class="subdued">2 Likes</a>
+              <a href="#" class="subdued">3 Comments</a>
+            </p>
+          </div>
+
+
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#">
+              <i class="icon ion-ios7-heart-outline"></i>
+              Like
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-ios7-chatbubble-outline"></i>
+              Comment
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-ios7-redo-outline"></i>
+              Share
+            </a>
+          </div>
+        </div>
+      </div ng-repeat>
+    <!-- end content -->
+      </ion-content>
+    </ion-view>
+  </ion-pane>
+<ng-include src="'views/inc/sidebar.html'" ></ng-include>
+</ion-side-menus>
+

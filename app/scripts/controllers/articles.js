@@ -1,10 +1,25 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('Articles', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+  .controller('ArticlesCtrl', function ($scope, ArticleService) {
+
+    $scope.article ={};
+
+    $scope.write = function() {
+      ArticleService.add($scope.article);
+    }
+
+    $scope.toggleMenu = function() {
+      $scope.sideMenuController.toggleLeft();
+    };
+    
+    $scope.leftButtons = [
+      {
+        type: 'button-clear',
+        content: '<i class="icon ion-navicon"></i>',
+        tap: function(e) {
+          $scope.toggleMenu();
+        }
+      }
     ];
   });

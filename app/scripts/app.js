@@ -61,10 +61,9 @@ angular.module('ellenApp', [
 
     $stateProvider
       .state('question',{
-        authRequired: true,
         url: '/question/:id',
-        templateUrl: 'views/singleQuestion.html',
-        controller: 'singleQuestionCtrl'
+        templateUrl: 'views/singlequestion.html',
+        controller: 'SingleQuestionCtrl'
       })
       .state('question.answers', {
         url: '/question/a/',
@@ -78,6 +77,7 @@ angular.module('ellenApp', [
 
     $stateProvider
       .state('questions', {
+        authRequired: true,
         url: '/questions',
         templateUrl: 'views/questions.html',
         controller: 'QuestionsCtrl'
@@ -95,7 +95,6 @@ angular.module('ellenApp', [
 
     $stateProvider
       .state('article', {
-        authRequired: true,
         url: '/article/:id',
         templateUrl: 'views/singleArticle.html',
         controller: 'SingleArticleCtrl'
@@ -103,19 +102,21 @@ angular.module('ellenApp', [
       
     $stateProvider
       .state('articles', {
-        authRequired: true,
         url: '/articles',
         templateUrl: 'views/articles.html',
         controller: 'ArticlesCtrl'
-      })
-      .state('articles.category', {
-        url: '/articles/:cat'
-      })
-      .state('articles.write', {
-        url: '/questions/write',
-        templateUrl: 'views/write.html',
-        controller: 'ArticleCtrl'
       });
+    $stateProvider
+      .state('write', {
+        url: '/articles/write',
+        templateUrl: 'views/write.html',
+        controller: 'ArticlesCtrl'
+      });
+    $stateProvider
+      .state('article_cat', {
+        url: '/articles/:cat'
+      });
+      
 
     // users now
 

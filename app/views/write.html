@@ -1,0 +1,29 @@
+<ion-side-menus >
+  <ion-pane ion-side-menu-content>
+    <ion-view  title="'Write an Article'" left-buttons="leftButtons">
+      <ion-content has-header="true" padding="true">
+      <!-- start content -->
+      <form ng-submit="write()">
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" ng-model="article.title" placeholder="Title">
+        </label>
+        <label class="item item-input">
+          <input type="text" ng-model="article.category" placeholder="Category">
+        </label>
+        <label class="item item-input">
+          <textarea placeholder="Write your question here" ng-model="article.content"></textarea>
+        </label>
+      </div>
+
+      <button type="submit" class="button button-positive">
+        Write
+      </button>
+      </form>
+      <!-- end content -->
+      </ion-content>
+    </ion-view>
+  </ion-pane>
+<ng-include src="'views/inc/sidebar.html'" ></ng-include>
+</ion-side-menus>
+

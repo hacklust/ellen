@@ -89,4 +89,10 @@
     -->
     <access origin="*"/> <!-- allow local pages -->
 
+    <!-- Possible solution -->
+    <gap:plugin name="com.phonegap.plugins.facebookconnect">
+        <param name="APP_ID" value="769621416381245" />
+        <param name="APP_NAME" value="Ellen" />
+    </gap:plugin>
+
 </widget>

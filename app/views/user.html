@@ -18,61 +18,17 @@
         </a>
       </div>
 
-      <div class="card">
-        <div class="item item-body">
-          <p>
-            What makes you fall in love? As smart women, you should know your rights especially the meaning
-            of Lorem ipsum dolor sit ametin..
-          </p>
-          <p>
-            <a href="#" class="subdued">12 Likes</a>
-            <a href="#" class="subdued">143 Answers</a>
-          </p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="item item-body">
-          <p>
-            What makes you fall in love?
-          </p>
-          <p>
-            <a href="#" class="subdued">12 Likes</a>
-            <a href="#" class="subdued">13 Answers</a>
-          </p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="item item-body">
-          <p>
-            You should know your rights especially the meaning
-            of Lorem ipsum dolor sit ametin..
-          </p>
-          <p>
-            <a href="#" class="subdued">2 Likes</a>
-            <a href="#" class="subdued">43 Answers</a>
-          </p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="item item-body">
-          <p>
-            What makes you fall in ametin..
-          </p>
-          <p>
-            <a href="#" class="subdued">12 Likes</a>
-            <a href="#" class="subdued">13 Answers</a>
-          </p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="item item-body">
-          <p>
-            What now?
-          </p>
-          <p>
-            <a href="#" class="subdued">1 Like</a>
-            <a href="#" class="subdued">13 Answers</a>
-          </p>
+      <div ng-repeat="(id, question) in questions">
+        <div class="card">
+          <div class="item item-body">
+            <p>
+              <b>{{question.title}}</b> : {{question.content}}
+            </p>
+            <p>
+              <a href="#" class="subdued">{{question.score || 0}} <ng-pluralize count="v.score" when="{'0': 'Likes', '1' : 'Like', 'other' : 'Likes'}"></ng-pluralize></a>
+              <a href="#" class="subdued">143 Answers</a>
+            </p>
+          </div>
         </div>
       </div>
 

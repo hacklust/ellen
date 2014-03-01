@@ -19,5 +19,17 @@ angular.module('ellenApp')
       }
     ];
 
+    $scope.upVoteFeed = function (feedId, upVoted) {
+      if (upVoted) {
+        FeedService.clearvote(feedId, upVoted);
+      } else {
+        FeedService.upvote(feedId);
+      }
+    }
+
+    $scope.upVoted  = function(feed) {
+      return FeedService.upvoted(feed);
+    }
+
 
   });

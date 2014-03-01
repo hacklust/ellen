@@ -5,7 +5,7 @@ angular.module('ellenApp')
     // ref questions
     var ref = firebaseRef('/feeds');
     // get all questions
-    var feed = $firebase(ref);
+    var feeds = $firebase(ref);
 
     return {
       all: feeds,

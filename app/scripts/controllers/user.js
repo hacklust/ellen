@@ -1,10 +1,20 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('UserCtrl', function ($scope, $stateParams, UserService, QuestionService, AnswerService) {
+  .controller('UserCtrl', function ($scope, $stateParams, UserService, FeedService) {
     $scope.user = UserService.findById($stateParams.id);
     $scope.url = '#/users/' + $stateParams.id;
     $scope.id = $stateParams.id;
+
+    $scope.user.$on('loaded', populateSubmissions);
+
+    function populateSubmissions () {
+      $scope.questions = {};
+
+      angular.forEach($scope.user.questions, function(qid){
+        $scope.questions[qid] = FeedService.find(qid);
+      });
+    }
 
     $scope.toggleMenu = function() {
       $scope.sideMenuController.toggleLeft();
@@ -20,14 +30,4 @@ angular.module('ellenApp')
       }
     ];
     
-    $scope.answers = '';
-    $scope.questions = '';
-
-    $scope.user.$on('loaded', function(){
-      console.log(Object.keys($scope.user.answers).length);
-      $scope.answersCount = Object.keys($scope.user.answers).length;
-      $scope.questionsCount = Object.keys($scope.user.questions).length;
-      $scope.commentsCount = Object.keys($scope.user.comments).length;
-      $scope.articlesCount = Object.keys($scope.user.articles).length;
-    });
   });

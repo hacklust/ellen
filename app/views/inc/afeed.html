@@ -12,14 +12,14 @@
       {{v.content}}
     </p>
     <p>
-      <a href="#" class="subdued">2 Likes</a>
+      <a href="#" class="subdued">{{v.score || 0}} <ng-pluralize count="v.score" when="{'0': 'Likes', '1' : 'Like', 'other' : 'Likes'}"></ng-pluralize></a>
       <a href="#" class="subdued">3 Comments</a>
     </p>
   </div>
 
 
   <div class="item tabs tabs-secondary tabs-icon-left">
-    <a class="tab-item" href="#">
+    <a class="tab-item" href="" ng-hide="downvoted(v)" ng-click="upVoteFeed(k, upVoted(v))">
       <i class="icon ion-ios7-heart-outline"></i>
       Like
     </a>

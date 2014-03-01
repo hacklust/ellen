@@ -113,10 +113,6 @@ angular.module('ellenApp', [
         templateUrl: 'views/write.html',
         controller: 'ArticlesCtrl'
       });
-    $stateProvider
-      .state('article_cat', {
-        url: '/articles/:cat'
-      });
       
 
     // users now

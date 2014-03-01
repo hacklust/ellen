@@ -18,41 +18,37 @@
 
         
         <div class="item tabs tabs-secondary tabs-icon-left">
-          <a class="tab-item" href="#">
+          <a class="tab-item" href="" ng-click="upVoteFeed(upVoted(article))">
             <i class="icon ion-ios7-heart-outline"></i>
             {{article.score || 0}} <ng-pluralize count="article.score" when="{'0': 'Likes', '1' : 'Like', 'other' : 'Likes'}"></ng-pluralize></a>
           </a>
-          <!-- <a class="tab-item" href="#">
+          <a class="tab-item" href="#">
             <i class="icon ion-ios7-chatbubble-outline"></i>
-            3 Comments
-            <a href="#" class="subdued">{{v.commentCount}} <ng-pluralize count="v.answerCount" when="{'0': 'No answer yet', '1' : 'Answer', 'other' : 'Answers'}"></ng-pluralize></a>
+            {{article.commentCount}} <ng-pluralize count="article.commentCount" when="{'0': 'No Comments yet', '1' : 'Comment', 'other' : 'Comments'}"></ng-pluralize>
           </a>
+          <!-- 
           <a class="tab-item" href="#">
             <i class="icon ion-ios7-redo-outline"></i>
             Share
           </a> -->
         </div>
-        <div class="item item-avatar comment">
-          <img ng-src="images/370796_1634354692_1856805680_q.jpg">
-          <h2>Joey Hipolito</h2>
-          <p>Please like and share with your friends. piditate non provident, similique sunt in culpa qui officia deserunt mollitia a</p>
+        <div ng-show="question.answers">
+        <h2>Comments:</h2>
+        <div ng-repeat="(commentId, comment) in article.answers">
+          <div class="item item-avatar comment">
+            <img ng-src="{{comment.author.pic}}">
+            <h2>{{comment.author.name}}</h2>
+            <p> {{comment.content}}</p>
+          </div>
         </div>
-        <div class="item item-avatar comment">
-          <img ng-src="images/319885_448812831809748_686101519.jpg">
-          <h2>Kristina Alfonsine</h2>
-          <p>Yeah, right!</p>
-        </div>
-        <div class="item item-avatar comment">
-          <img ng-src="images/203292_826902383_870313002_q.jpg">
-          <h2>Rex Bringula</h2>
-          <p>Perfect! This means a lot to me.</p>
-        </div>
+      </div>
+
       </ion-content>
 
       <ion-footer-bar class="bar bar-footer bar-light padding-left">
-        <form class="row">
-          <input id="query" name="query" type="text" placeholder="Write a comment" class="col padding-horizontal" ng-model="user.query" />
-          <input type="submit" value="Comment" class="col col-25 button button-dark" />
+        <form class="row" ng-submit="commentOn()">
+          <input id="query" name="query" type="text" placeholder="Write a comment" class="col padding-horizontal" ng-model="comment.content" />
+          <input type="submit" value="Comment" class="col col-25 button button-dark"/>
         </form>
       </ion-footer-bar>
     </ion-view>

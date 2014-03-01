@@ -26,6 +26,13 @@ angular.module('ellenApp', [
       });
 
     $stateProvider
+      .state('logout', {
+        authRequired: true, // add this to routes that need authentication :D require to all
+        url: '/logout',
+        controller: 'LogoutCtrl'
+      });
+
+    $stateProvider
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',

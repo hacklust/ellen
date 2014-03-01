@@ -25,14 +25,34 @@
               <b>{{question.title}}</b> : {{question.content}}
             </p>
             <p>
-              <a href="#" class="subdued">{{question.score || 0}} <ng-pluralize count="v.score" when="{'0': 'Likes', '1' : 'Like', 'other' : 'Likes'}"></ng-pluralize></a>
-              <a href="#" class="subdued">143 Answers</a>
+              <a href="#" class="subdued">{{question.score || 0}} <ng-pluralize count="question.score" when="{'0': 'Likes', '1' : 'Like', 'other' : 'Likes'}"></ng-pluralize></a>
+              <a href="#" class="subdued">{{question.answerCount}} <ng-pluralize count="question.answerCount" when="{'0': 'No answer yet', '1' : 'Answer', 'other' : 'Answers'}"></ng-pluralize></a>
             </p>
           </div>
         </div>
       </div>
 
       <div class="card card-full-width">
+        <a class="item item-icon-left dark-bg light" href="#">
+          <i class="icon ion-ios7-help-outline energized"></i>
+          {{articlesCount}} Articles
+        </a>
+      </div>
+      <div ng-repeat="article in articles">
+        <div class="card">
+          <div class="item item-body">
+            <p>
+              <b>{{article.title}}</b> : {{article.content}}
+            </p>
+            <p>
+              <a href="#" class="subdued">{{article.score || 0}} <ng-pluralize count="article.score" when="{'0': 'Likes', '1' : 'Like', 'other' : 'Likes'}"></ng-pluralize></a>
+              <a href="#" class="subdued">{{article.answerCount}} <ng-pluralize count="article.answerCount" when="{'0': 'No answer yet', '1' : 'Answer', 'other' : 'Answers'}"></ng-pluralize></a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="card card-full-width">
         <a class="item item-icon-left dark-bg light" href="#">
           <i class="icon ion-ios7-checkmark-outline energized"></i>
           32 Answers
@@ -92,7 +112,7 @@
             <a href="#" class="subdued">12 Likes</a>
           </p>
         </div>
-      </div>
+      </div> -->
 
       </ion-content>
     </ion-view>

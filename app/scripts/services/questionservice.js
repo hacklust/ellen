@@ -20,6 +20,7 @@ angular.module('ellenApp')
         question.type = 'question';
         
         feeds.$add(question).then(function(ref){
+          ref.setPriority(Date.now());
           ref.setPriority('question');
           user.$child('questions').$set({id: ref.name()});
         });

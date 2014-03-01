@@ -9,11 +9,17 @@ angular.module('ellenApp')
     $scope.user.$on('loaded', populateSubmissions);
 
     function populateSubmissions () {
-      $scope.questions = {};
+      $scope.questions = [];
+      $scope.articles = [];
 
       angular.forEach($scope.user.questions, function(qid){
-        $scope.questions[qid] = FeedService.find(qid);
+        $scope.questions.push(FeedService.find(qid));
       });
+
+      angular.forEach($scope.user.articles, function(id){
+        $scope.articles.push(FeedService.find(id.id));
+      });
+
     }
 
     $scope.toggleMenu = function() {

@@ -17,7 +17,7 @@
             </p>
             <p>
               <a href="#" class="subdued">{{v.score || 0}} <ng-pluralize count="article.score" when="{'0' : 'Likes' , '1' : 'Like', 'other' : 'Likes'}">Likes</ng-pluralize></a>
-              <a href="#" class="subdued">143 Answers</a>
+              <a href="#" class="subdued">{{article.commentCount}} <ng-pluralize count="article.commentCount" when="{'0': 'No Comments yet', '1' : 'Comment', 'other' : 'Comments'}"></ng-pluralize></a>
             </p>
           </div>
           

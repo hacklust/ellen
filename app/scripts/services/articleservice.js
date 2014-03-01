@@ -18,6 +18,7 @@ angular.module('ellenApp')
         article.type = 'article';
 
         feeds.$add(article).then(function(ref){
+          ref.setPriority(Date.now());
           ref.setPriority('article');
           user.$child('articles').$child(ref.name()).$set({id: ref.name()});
         });

@@ -40,6 +40,13 @@ angular.module('ellenApp', [
       });
 
     $stateProvider
+      .state('register', {
+        url: '/register',
+        templateUrl: 'views/register.html',
+        controller: 'LoginCtrl'
+      });
+
+    $stateProvider
       .state('ellen', {
         authRequired: true,
         url: '/ellen',

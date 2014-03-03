@@ -1,0 +1,27 @@
+<!-- wait for auth to resolve (avoid flashing login page before redirect -->
+<ion-view title="'Welcome to Ellen'">
+    <ion-content class="center login" has-bouncing="true" has-header="true">
+        <img class="logo logo--smaller" src="images/logo.png"/>
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="text" placeholder="Full Name" ng-model="user.name">
+          </label>
+          <label class="item item-input">
+            <input type="text" placeholder="Email" ng-model="user.email">
+          </label>
+          <label class="item item-input">
+            <input type="password" placeholder="Password" ng-model="user.password">
+          </label>
+          <button ng-click="register()" class="button button-block button-dark-blue icon-right">
+            <i class="icon ion-ios7-compose padding-horizontal"></i>
+            Sign me up!
+          </button>
+        </div>
+         <p class="login-p">
+          Already have an account?
+          <a href="#/login" class="login-register energized">
+            <i class="icon ion-ios7-arrow-thin-left"></i>Sign in!
+          </a>
+        </p>
+    </ion-content>
+</ion-view>

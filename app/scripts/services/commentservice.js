@@ -11,6 +11,7 @@ angular.module('ellenApp')
         comment.created = Firebase.ServerValue.TIMESTAMP;
         comment.author = {id: user.id, name: user.name, pic: user.pic};
         comment.postId = postId;
+        comment.$priority = Firebase.ServerValue.TIMESTAMP;
 
         post.$child('comments').$add(comment).then(function(ref){
           post.$child('commentCount').$transaction(function(count){

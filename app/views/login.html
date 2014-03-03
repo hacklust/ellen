@@ -2,9 +2,25 @@
 <ion-view title="'Welcome to Ellen'">
     <ion-content class="center login" has-bouncing="true" has-header="true">
         <img class="full-image logo" src="images/logo.png" />
-        <button ng-click="login('facebook')" class="button button-dark-blue icon-left">
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="text" placeholder="Email" ng-model="user.email">
+          </label>
+          <label class="item item-input">
+            <input type="password" placeholder="Password" ng-model="user.password">
+          </label>
+          <button ng-click="login()" class="button button-block button-dark-blue icon-left">
+            <i class="icon ion-ios7-unlocked padding-horizontal"></i>
+            Login
+          </button>
+          
+        </div>
+        <p class="login-p">
+          New User?<a href="#/register" class="login-register energized"> Register Now!</a>
+        </p>
+<!--         <button ng-click="login('facebook')" class="button button-dark-blue icon-left">
             <i class="icon ion-social-facebook padding-horizontal"></i>
             Login via Facebook
-        </button>
+        </button> -->
     </ion-content>
 </ion-view>

@@ -5,7 +5,7 @@ angular.module('ellenApp')
     // ref feeds
     var ref = firebaseRef('/feeds');
     // get all feeds
-    var feeds = $firebase(ref.startAt(Date.now()));
+    var feeds = $firebase(ref.limit(50));
 
     return {
       all: feeds,

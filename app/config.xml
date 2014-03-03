@@ -38,6 +38,8 @@
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
     <preference name="webviewbounce"              value="true" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
 
+    <preference name="loadUrlTimeoutValue"   value="60000)" />
+    
     <!-- Plugins -->
 
     <!-- Core plugins -->
@@ -89,10 +91,5 @@
     -->
     <access origin="*"/> <!-- allow local pages -->
 
-    <!-- Possible solution -->
-    <gap:plugin name="com.phonegap.plugins.facebookconnect">
-        <param name="APP_ID" value="769621416381245" />
-        <param name="APP_NAME" value="Ellen" />
-    </gap:plugin>
 
 </widget>

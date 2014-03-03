@@ -1,15 +1,19 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('LoginCtrl', function ($rootScope, $scope, simpleLogin, UserService) {
-    $scope.pass = null;
-    $scope.err = null;
-    $scope.user = null;
+  .controller('LoginCtrl', function ($rootScope, $scope, Auth, UserService) {
 
-    $scope.login = function(service) {
-      simpleLogin.login(service, function(err, user) {
-        $scope.err = err? err + '' : null;
+    $scope.user = {};
+
+    $scope.login = function() {
+      Auth.login($scope.user);
+      $scope.user = {};
+    }
+
+    $scope.register = function() {
+      Auth.register($scope.user).then(function(authUser){
+        UserService.create(authUser, $scope.user);
+        $scope.user = {};
       });
-    };
-
+    }
   });

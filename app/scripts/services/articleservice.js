@@ -16,15 +16,14 @@ angular.module('ellenApp')
         article.author = {id: user.id, name: user.name, pic: user.pic};
         article.score = 0;
         article.type = 'article';
+        article.$priority = Date.now();
 
         feeds.$add(article).then(function(ref){
-          ref.setPriority(Date.now());
           ref.setPriority('article');
           user.$child('articles').$child(ref.name()).$set({id: ref.name()});
         });
       },
       find: function(id) {
-        console.log(id);
         return feeds.$child(id);
       }
     };

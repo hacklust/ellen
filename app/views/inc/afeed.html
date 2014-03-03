@@ -1,7 +1,7 @@
 <div class="list card article-card">
   <div class="item item-avatar">
     <img ng-src="{{v.author.pic}}">
-    <h2><a href="#/article/{{k}}">{{v.title}}</a></h2>
+    <h2><a href="#/article/{{v.name}}">{{v.title}}</a></h2>
     <p>{{v.author.name}}</p>
   </div>
 
@@ -18,11 +18,11 @@
 
 
   <div class="item tabs tabs-secondary tabs-icon-left">
-    <a class="tab-item" href="" ng-hide="downvoted(v)" ng-click="upVoteFeed(k, upVoted(v))">
+    <a class="tab-item" href="" ng-hide="downVoted(v)" ng-click="upVoteFeed(v.name, upVoted(v))">
       <i class="icon ion-ios7-heart-outline"></i>
       Like
     </a>
-    <a class="tab-item" href="#/article/{{k}}">
+    <a class="tab-item" href="#/article/{{v.name}}">
       <i class="icon ion-ios7-chatbubble-outline"></i>
       Comment
     </a>

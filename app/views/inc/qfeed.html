@@ -6,7 +6,7 @@
   </div>
 
   <div class="item item-body">
-    <h2><a href="#/question/{{k}}">{{v.title}}</a></h2>
+    <h2><a href="#/question/{{v.name}}">{{v.title}}</a></h2>
     <p>
       {{v.content}}
     </p>
@@ -17,11 +17,11 @@
   </div>
   
   <div class="item tabs tabs-secondary tabs-icon-left">
-    <a class="tab-item" href="" ng-hide="downvoted(v)" ng-click="upVoteFeed(k, upVoted(v))">
+    <a class="tab-item" href="" ng-hide="downvoted(v)" ng-click="upVoteFeed(v.name, upVoted(v))">
       <i class="icon ion-ios7-heart-outline"></i>
       Like
     </a>
-    <a class="tab-item" href="#/question/{{k}}">
+    <a class="tab-item" href="#/question/{{v.name}}">
       <i class="icon ion-ios7-chatbubble-outline"></i>
       Answer
     </a>

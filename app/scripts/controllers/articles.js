@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('ArticlesCtrl', function ($scope, ArticleService, FeedService) {
+  .controller('ArticlesCtrl', function ($scope, ArticleService, FeedService, $location) {
 
     $scope.articles = ArticleService.all;
 
@@ -10,6 +10,7 @@ angular.module('ellenApp')
     $scope.write = function() {
       ArticleService.add($scope.article);
       $scope.article ={};
+      $location.path('/');
     }
 
     $scope.toggleMenu = function() {

@@ -231,6 +231,30 @@ input[type="search"] {
     margin-bottom: 40px;
 }
 
+.login {
+    padding: 20px;
+}
+
+.login .list-inset {
+    background: transparent;
+}
+
+.login .item-input {
+    background: rgba(0,0,0,0.5);
+    border: 0;
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"], {
+        color: #fff;
+    }
+}
+
+.login-p {
+    color: #fff;
+}
+
+
 .login.scroll-content {
     background: url(../images/bg.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
@@ -239,6 +263,10 @@ input[type="search"] {
 
 .logo {
     margin: 2em 0;
+}
+
+.logo--smaller {
+    height: 12rem;
 }
 
 .button.button-dark-blue {

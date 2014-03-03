@@ -3,7 +3,7 @@
     <ion-view  title="'News Feed'" left-buttons="leftButtons">
       <ion-content has-header="true" padding="true">
       <!-- start content -->
-      <div ng-repeat="(k,v) in feeds" ng-switch on="v.type">
+      <div ng-repeat="(k,v) in feeds | reverse" ng-switch on="v.type">
         <div ng-switch-when="article">
           <div ng-include="'views/inc/afeed.html'"></div>
         </div>

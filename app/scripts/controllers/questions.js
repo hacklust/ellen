@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('QuestionsCtrl', function ($scope, QuestionService, FeedService) {
+  .controller('QuestionsCtrl', function ($location, $scope, QuestionService, FeedService) {
     
     $scope.questions = QuestionService.all;
 
@@ -9,6 +9,7 @@ angular.module('ellenApp')
     $scope.ask = function () {
       QuestionService.add($scope.question);
       $scope.question = {};
+      $location.path('/');
     }
     $scope.toggleMenu = function() {
       $scope.sideMenuController.toggleLeft();

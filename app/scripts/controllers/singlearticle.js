@@ -16,10 +16,16 @@ angular.module('ellenApp')
     $scope.toggleMenu = function() {
       $scope.sideMenuController.toggleLeft();
     };
-
-    $scope.toggleMenu = function() {
-      $scope.sideMenuController.toggleLeft();
-    };
+    
+    $scope.leftButtons = [
+      {
+        type: 'button-clear',
+        content: '<i class="icon ion-navicon"></i>',
+        tap: function(e) {
+          $scope.toggleMenu();
+        }
+      }
+    ];
 
     $scope.upVoteFeed = function (upVoted) {
       if (upVoted) {
@@ -32,16 +38,5 @@ angular.module('ellenApp')
     $scope.upVoted  = function(feed) {
       return FeedService.upvoted(feed);
     }
-
-    $scope.leftButtons = [
-      {
-        type: 'button-clear',
-        content: '<i class="icon ion-navicon"></i>',
-        tap: function(e) {
-          $scope.toggleMenu();
-        }
-      }
-    ];
-
 
   });

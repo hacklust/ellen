@@ -18,12 +18,14 @@ angular.module('ellenApp')
         question.author = {id: user.id, name: user.name, pic: user.pic};
         question.score = 0;
         question.type = 'question';
+        question.$priority = Date.now();
         
         feeds.$add(question).then(function(ref){
-          ref.setPriority(Date.now());
           ref.setPriority('question');
           user.$child('questions').$set({id: ref.name()});
+          return ref.name();
         });
+
 
       },
       find: function(id) {

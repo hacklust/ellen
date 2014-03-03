@@ -31,5 +31,16 @@ angular.module('ellenApp')
       return FeedService.upvoted(feed);
     }
 
+    $scope.downVotePost = function (feedId, downVoted) {
+      if (downVoted) {
+        FeedService.clearVote(feedId, false);
+      } else {
+        FeedService.downvote(feedId);
+      }
+    };
+
+    $scope.downVoted = function (feed) {
+      return FeedService.downvoted(feed);
+    };
 
   });

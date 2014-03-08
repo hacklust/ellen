@@ -1,12 +1,22 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('LoginController', function($scope, simpleLogin, $location) {
+  .controller('LoginController', function($scope, Auth, simpleLogin) {
     $scope.pass = '';
     $scope.err = '';
     $scope.confirm = '';
     $scope.createMode = false;
-    $scope.user = '';
+    $scope.user = {};
+
+    // $scope.login = function() {
+    //   Auth.login($scope.user).then(function(snap){
+    //     console.log(snap);
+    //   });
+    // }
+
+    // $scope.register = function() {
+    //   Auth.createAccount($scope.email, $scope.password)
+    // }
 
     $scope.login = function(service) {
       simpleLogin.login(service, function(err) {

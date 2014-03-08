@@ -14,4 +14,4 @@ angular.module('ellenApp')
   .constant('loginProviders', 'facebook,twitter,password')
 
   // your Firebase URL goes here
-  .constant('FBURL', 'https://mcw.firebaseio.com');
+  .constant('FBURL', 'https://ellen.firebaseio.com');

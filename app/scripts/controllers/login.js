@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('LoginCtrl', function($scope, Auth) {
+  .controller('LoginCtrl', function($scope, Auth, UserService) {
     $scope.err = '';
     $scope.createMode = false;
     $scope.user = {};
@@ -9,8 +9,8 @@ angular.module('ellenApp')
     $scope.login = function(isValid) {
         console.log(isValid);
         if (isValid) {
-          Auth.login($scope.user).then(function(snap){
-            console.log(snap);
+          Auth.login($scope.user).then(function(authUser){
+            UserService.login(authUser);
           });
         };
     }
@@ -19,7 +19,7 @@ angular.module('ellenApp')
       if (isValid) {
         console.log(isValid);
         Auth.createAccount($scope.user).then(function(authUser){
-          console.log(authUser);
+          UserService.create(authUser, $scope.user);
         });
       };
     }

@@ -40,5 +40,11 @@ angular.module('ellenApp', [
         controller: 'HomeCtrl'
       });
 
-
+    $stateProvider
+      .state('post', {
+        authRequired: false,
+        url: '/post',
+        templateUrl: 'views/post.html',
+        controller: 'PostCtrl'
+      });
   });

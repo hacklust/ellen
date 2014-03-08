@@ -16,9 +16,9 @@ angular.module('ellenApp')
         post.upvotes = 0;
         post.$priority = post.type;
 
-        feeds.$add(post).then(function(refPost){
+        return feeds.$add(post).then(function(refPost){
           // persist post to author
-          user.$child(post.type).$child(refPost.name()).set({id: refPost.name()});
+          user.$child(post.type).$child(refPost.name()).$set({id: refPost.name()});
         })
       },
       findById: function(id){

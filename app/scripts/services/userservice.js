@@ -51,7 +51,7 @@ angular.module('ellenApp')
       },
       getCurrent: function() {
         return $rootScope.currentUser;
-      }
+      },
       setCurrent: function(userId) {
         $rootScope.currentUser = findById(userId);
       },

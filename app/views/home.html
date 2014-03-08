@@ -1,1 +1,14 @@
-<p>This is the home view.</p>
+<ion-side-menus>
+  <ion-pane ion-side-menu-content>
+      <ion-nav-bar animation="nav-title-slide-ios7" 
+           type="bar-royal" 
+           back-button-type="button-icon" 
+           back-button-icon="ion-chevron-left"></ion-nav-bar>
+      <ion-view title="'Home'" left-buttons="leftButtons" right-buttons="rightButtons">
+        <ion-content has-header="true" padding="true">
+        <!-- Load Feeds Here, use switch for each type of feed-->
+        </ion-content>
+      </ion-view>
+    </ion-pane>
+  <ng-include src="'views/inc/side-left.html'"></ng-include>
+</ion-side-menus>

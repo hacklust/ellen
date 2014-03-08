@@ -3,67 +3,44 @@
     <ion-view title="'Welcome to Ellen'">
       <ion-content class="center login" has-bouncing="true">
         <img class="full-image logo" src="images/logo.png" />
+        
+        <form name="loginForm" novalidate>
+        <!-- <p ng-show="loginForm.name.$invalid && !loginForm.name.$pristine" class="energized"><b>You name is required.</b></p>
+        <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="energized"><b>Enter a valid email.</b></p> -->
         <div class="list list-inset">
-          <label class="item item-input">
-            <input type="text" placeholder="Email" ng-model="user.email">
+          <label class="item item-input" ng-show="createMode">
+            <i ng-show="loginForm.name.$invalid && !loginForm.name.$pristine" class="icon ion-ios7-information-outline assertive placeholder-icon"></i>
+            <input name="name" type="text" placeholder="Full Name" ng-model="user.name" ng-required="createMode">
           </label>
           <label class="item item-input">
-            <input type="password" placeholder="Password" ng-model="user.password">
+            <i ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="icon ion-ios7-information-outline assertive placeholder-icon"></i>
+            <input name="email" type="email" placeholder="Email" ng-model="user.email" required>
           </label>
-          <button ng-click="login()" class="button button-block button-dark-blue icon-left">
+          <label class="item item-input">
+            <i ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="icon ion-ios7-information-outline assertive placeholder-icon"></i>
+            <input name="password" type="password" placeholder="Password" ng-model="user.password" required>
+          </label>
+          
+          <button ng-hide="createMode" ng-click="login(loginForm.$valid)" class="button button-royal button-block icon-left" ng-disabled="loginForm.$invalid">
             <i class="icon ion-ios7-unlocked padding-horizontal"></i>
             Login
           </button>
-          
+          <div class="row" ng-show="createMode" >
+            <button ng-click="createMode = false" class="button button-energized icon-left col">
+              <i class="icon ion-ios7-close-empty padding-horizontal"></i>
+              Cancel
+            </button>
+            <button ng-click="register(loginForm.$valid)" class="button button-calm icon-left col" ng-disabled="loginForm.$invalid">
+              <i class="icon ion-ios7-checkmark-empty padding-horizontal"></i>
+              Register
+            </button>
+          </div>
         </div>
-        <p class="login-p">
-          New User?<a href="#/register" class="login-register energized"> Register Now!</a>
+        </form>
+        <p class="login-p" ng-hide="createMode">
+          New User?<a href="" class="login-register energized" ng-click="createMode = true"> Register Now!</a>
         </p>
       </ion-content>
-      <!-- <ion-content has-header="true"  padding="true">
-        <fieldset>
-          <legend>Oauth</legend>
-          <p>
-            <button class="btn btn-lg btn-primary" ng-click="login('facebook')">Facebook</button>
-            <button class="btn btn-lg btn-primary" ng-click="login('twitter')">Twitter</button>
-          </p>
-        </fieldset>
-
-        
-        <p>&nbsp;</p>
-        <form role="form">
-          <fielset>
-            <legend>Email/Password</legend>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>email</label><tt>email = {{email1}}</tt><br/>
-                  <input class="form-control" type="text" ng-model="email1" />
-                </div>
-
-                <div class="form-group">
-                  <label>password</label>
-                  <input class="form-control" type="password" ng-model="pass" />
-                </div>
-
-                <div class="form-group" ng-show="createMode">
-                  <label>confirm pass</label>
-                  <input class="form-control" type="password" ng-model="confirm" />
-                </div>
-
-                <button class="btn btn-primary" ng-click="loginPassword()" ng-hide="createMode">Log In</button>
-                <button class="btn btn-default" ng-click="createMode = true" ng-hide="createMode">Register</button>
-                <button class="btn btn-success" ng-show="createMode" ng-click="createAccount()">Create Account</button>
-                <button class="btn btn-default" ng-show="createMode" ng-click="createMode = false">Cancel</button>
-              </div>
-            </div>
-          </fielset>
-        </form>
-        <br />
-        <div ng-show="err" class="alert alert-danger"><strong>{{err}}</strong></div>
-
-      </ion-content> -->
       
     </ion-view>
   </ion-pane>

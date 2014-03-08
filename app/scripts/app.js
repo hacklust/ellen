@@ -17,7 +17,7 @@ angular.module('ellenApp', [
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-      .state('home', {
+      .state('main', {
         authRequired: false,
         url: '/',
         templateUrl: 'views/main.html',
@@ -31,4 +31,14 @@ angular.module('ellenApp', [
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       });
+
+    $stateProvider
+      .state('home', {
+        authRequired: false,
+        url: '/home',
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
+      });
+
+
   });

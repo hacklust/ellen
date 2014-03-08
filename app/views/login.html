@@ -1,7 +1,26 @@
 <ion-side-menus>
   <ion-pane ion-side-menu-content>
-    <ion-view title="'Login'" left-buttons="leftButtons" right-buttons="rightButtons">
-      <ion-content has-header="true"  padding="true">
+    <ion-view title="'Welcome to Ellen'">
+      <ion-content class="center login" has-bouncing="true">
+        <img class="full-image logo" src="images/logo.png" />
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="text" placeholder="Email" ng-model="user.email">
+          </label>
+          <label class="item item-input">
+            <input type="password" placeholder="Password" ng-model="user.password">
+          </label>
+          <button ng-click="login()" class="button button-block button-dark-blue icon-left">
+            <i class="icon ion-ios7-unlocked padding-horizontal"></i>
+            Login
+          </button>
+          
+        </div>
+        <p class="login-p">
+          New User?<a href="#/register" class="login-register energized"> Register Now!</a>
+        </p>
+      </ion-content>
+      <!-- <ion-content has-header="true"  padding="true">
         <fieldset>
           <legend>Oauth</legend>
           <p>
@@ -44,11 +63,11 @@
         <br />
         <div ng-show="err" class="alert alert-danger"><strong>{{err}}</strong></div>
 
-      </ion-content>
+      </ion-content> -->
       
     </ion-view>
   </ion-pane>
-  <ion-side-menu side="left"></ion-side-menu>
+  <ng-include src="'views/inc/side-left.html'"></ng-include>
 </ion-side-menus>
 
 <!-- wait for auth to resolve (avoid flashing login page before redirect -->

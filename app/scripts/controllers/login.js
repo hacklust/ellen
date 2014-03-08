@@ -65,5 +65,4 @@ angular.module('ellenApp')
         });
       }
     };
-
   });

@@ -29,6 +29,6 @@ angular.module('ellenApp', [
         authRequired: false,
         url: '/login',
         templateUrl: 'views/login.html',
-        controller: 'LoginController'
+        controller: 'LoginCtrl'
       });
   });

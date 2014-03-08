@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('Auth', function ($rootScope, $firebaseSimpleLogin, firebaseRef) {
+  .factory('Auth', function ($rootScope, $firebaseSimpleLogin, firebaseRef, $timeout) {
 
     var ref = firebaseRef();
     var auth = $firebaseSimpleLogin(ref);
 
-    function assertAuth () {
-      if(auth === null) {
-        throw new Error('Initialize the auth first');
+    function assertAuth() {
+      if( auth === null ) {
+        throw new Error('Initialize first this service');
       }
     }
 
@@ -24,9 +24,9 @@ angular.module('ellenApp')
         assertAuth();
         return auth.$logout();
       },
-      createAccount: function(email, pass, callback) {
+      createAccount: function(user) {
         assertAuth();
-        return auth.$createUser(email, pass);
+        return auth.$createUser(user.email, user.password);
       },
       isLoggedIn: function() {
         return auth.user !== null;

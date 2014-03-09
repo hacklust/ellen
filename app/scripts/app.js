@@ -18,7 +18,7 @@ angular.module('ellenApp', [
 
     $stateProvider
       .state('main', {
-        authRequired: false,
+        authRequired: true,
         url: '/',
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl'
@@ -26,7 +26,7 @@ angular.module('ellenApp', [
 
     $stateProvider
       .state('home', {
-        authRequired: false,
+        authRequired: true,
         url: '/home',
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl'
@@ -44,7 +44,7 @@ angular.module('ellenApp', [
 
     $stateProvider
       .state('ellen', {
-        authRequired: false,
+        authRequired: true,
         url: '/ellen',
         templateUrl: 'views/ellen.html',
         controller: 'EllenCtrl'
@@ -54,9 +54,27 @@ angular.module('ellenApp', [
 
     $stateProvider
       .state('post', {
-        authRequired: false,
+        authRequired: true,
         url: '/post/:id',
         templateUrl: 'views/post.html',
         controller: 'PostCtrl'
       });
+
+    // miscellaneous
+    $stateProvider
+      .state('about', {
+        authRequired: true,
+        url: '/about',
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      });
+
+    $stateProvider
+      .state('report', {
+        authRequired: true,
+        url: '/report',
+        templateUrl: 'views/report.html',
+        controller: 'ReportCtrl'
+      });
+
   });

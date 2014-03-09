@@ -10,4 +10,21 @@
       {{feed.content | excerpt:160}}
     </p>
   </div>
+  
+  <!-- voting tabs! -->
+  <div class="item tabs tabs-secondary tabs-icon-left">
+    <a class="tab-item" href="" ng-click="upvote(feed.id)">
+      <i class="icon ion-chevron-up"></i>
+      Upvote
+    </a>
+    <a class="tab-item" href="" ng-click="downvote(feed.id)">
+      <i class="icon ion-chevron-down"></i>
+      Downvote
+    </a>
+    <a class="tab-item" href="#/question/{{v.name}}">
+      <i class="icon ion-compose"></i>
+      Answer
+    </a>
+  </div>
+
 </div>

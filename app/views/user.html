@@ -1,0 +1,51 @@
+<ion-side-menus>
+  <ion-pane ion-side-menu-content>
+      <ion-nav-bar animation="nav-title-slide-ios7" 
+           type="bar-royal" 
+           back-button-type="button-icon" 
+           back-button-icon="ion-chevron-left"></ion-nav-bar>
+      <ion-view title="'Home'" left-buttons="leftButtons" right-buttons="rightButtons">
+
+      <ion-content has-header="true">
+        
+        <div class="list card card-full-width">
+          <div class="item item-body center">
+            <img ng-src="{{user.pic}}" class="circle">
+            <h2>{{ user.name }}</h2>
+            <p>{{ user.location.name }}</p>
+            <p><b>Last Login: </b>{{ user.lastLogin | date:'fullDate'}}</p>
+          </div>
+        </div>
+
+        <div class="card card-full-width">
+          <div class="item item-icon-left dark-bg light">
+            <i class="icon ion-ios7-help-outline energized"></i>
+            {{questions.length}} Questions
+          </div>
+          <div class="item" ng-hide="questions">
+            You have not asked yet.
+          </div>
+          <a href="#/post/{{question.id}}" class="item" ng-repeat="(id, question) in questions | orderByPriority | reverse" ng-show="question.title">
+            <b>{{question.title}}</b>
+          </a>
+          <div class="item item-icon-left dark-bg light">
+            <i class="icon ion-ios7-lightbulb-outline energized"></i>
+            {{answers.length}} <ng-pluralize count="answers.length" when="{'0': 'Answers', '1' : 'Answer', 'other' : 'Answers'}"></ng-pluralize>
+          </div>
+          <div class="item" ng-hide="answers">
+            You have not answered any questions yet.
+          </div>
+          <a  href="#/post/{{answer.questionId}}"  class="item" ng-repeat="(id, answer) in answers | orderByPriority | reverse" ng-show="answer.content">
+            <p>
+              {{answer.content}}
+            </p>
+          </a>
+        </div>
+        
+        
+
+        </ion-content>
+      </ion-view>
+    </ion-pane>
+  <ng-include src="'views/inc/side-left.html'"></ng-include>
+</ion-side-menus>

@@ -60,6 +60,16 @@ angular.module('ellenApp', [
         controller: 'PostCtrl'
       });
 
+    // the user
+
+    $stateProvider
+      .state('user', {
+        authRequired: true,
+        url: '/user/:id',
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl'
+      });
+
     // miscellaneous
     $stateProvider
       .state('about', {

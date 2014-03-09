@@ -22,7 +22,7 @@ angular.module('ellenApp')
         })
       },
       findById: function(id){
-        return feeds.$child(id)
+        return feeds.$child(id);
       }
     }
   });

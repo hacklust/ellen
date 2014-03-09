@@ -13,7 +13,8 @@ angular.module('ellenApp')
         // hard-coded  // article for web app only
         $scope.post.type = 'question';
         FeedService.add($scope.post).then(function(){
-          // end spinner perhaps
+          $scope.modal.hide();
+          $scope.post = {};
         });
       };
     }

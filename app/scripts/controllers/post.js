@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('PostCtrl', function ($scope, $stateParams, FeedService) {
+  .controller('PostCtrl', function ($scope, $stateParams, FeedService, AnswerService) {
     
     $scope.feed = FeedService.findById($stateParams.id);
+    $scope.answer = {};
 
     $scope.toggleMenu = function() {
       $scope.sideMenuController.toggleLeft();
@@ -18,5 +19,12 @@ angular.module('ellenApp')
         }
       }
     ];
+
+    $scope.answerQuestion = function(isValid) {
+      if (isValid) {
+        AnswerService.add($scope.feed, $stateParams.id, $scope.answer);
+        $scope.answer = {};
+      };
+    }
 
   });

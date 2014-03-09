@@ -26,4 +26,30 @@
       Answer
     </a>
   </div>
+
+  <!-- answers section -->
+  <div ng-show="feed.answers">
+    <div class="item item-avatar comment" ng-repeat="(answerID, answer) in feed.answers">
+      <img ng-src="{{answer.author.pic}}">
+      <h2>{{answer.author.name}}</h2>
+      <p>{{answer.content}}</p>
+    </div>
+  </div>
 </div>
+
+<p class="energized" ng-show="answerForm.content.$invalid && !answerForm.content.$pristine">
+  <b>Answer content must be atleast 30 characters.</b>
+</p>
+
+<h3>Your Answer:</h3> 
+<form name="answerForm" ng-submit="answerQuestion(answerForm.$valid)">
+  <div class="list">
+    <label class="item item-input">
+      <textarea name="content" style="height:100px" placeholder="Type your answer here" ng-model="answer.content" required ng-minlength="30"></textarea>
+    </label>
+  </div>
+
+  <button type="submit" class="button button-royal" ng-disabled="answerForm.$invalid">
+    Post Your Answer
+  </button>
+</form>

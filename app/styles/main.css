@@ -244,9 +244,9 @@ input[type="search"] {
   border: 0;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"] {
+.login input[type="text"],
+.login input[type="password"],
+.login input[type="email"] {
   color: #fff;
 }
 

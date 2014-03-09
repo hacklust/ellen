@@ -13,11 +13,11 @@
   
   <!-- voting tabs! -->
   <div class="item tabs tabs-secondary tabs-icon-left">
-    <a class="tab-item" href="" ng-click="upvote(feed.id)">
+    <a ng-controller="VoteCtrl"  class="tab-item" href="" ng-click="upvote(feed.id)">
       <i class="icon ion-chevron-up"></i>
       Upvote
     </a>
-    <a class="tab-item" href="" ng-click="downvote(feed.id)">
+    <a ng-controller="VoteCtrl"  class="tab-item" href="" ng-click="downvote(feed.id)">
       <i class="icon ion-chevron-down"></i>
       Downvote
     </a>

@@ -20,8 +20,8 @@ angular.module('ellenApp', [
       .state('main', {
         authRequired: false,
         url: '/',
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
       });
 
     $stateProvider
@@ -43,7 +43,7 @@ angular.module('ellenApp', [
     $stateProvider
       .state('post', {
         authRequired: false,
-        url: '/post',
+        url: '/post/:id',
         templateUrl: 'views/post.html',
         controller: 'PostCtrl'
       });

@@ -25,6 +25,14 @@ angular.module('ellenApp', [
       });
 
     $stateProvider
+      .state('home', {
+        authRequired: false,
+        url: '/home',
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
+      });
+
+    $stateProvider
       .state('login', {
         authRequired: false,
         url: '/login',
@@ -32,13 +40,17 @@ angular.module('ellenApp', [
         controller: 'LoginCtrl'
       });
 
+    // the bot
+
     $stateProvider
-      .state('home', {
+      .state('ellen', {
         authRequired: false,
-        url: '/home',
-        templateUrl: 'views/home.html',
-        controller: 'HomeCtrl'
+        url: '/ellen',
+        templateUrl: 'views/ellen.html',
+        controller: 'EllenCtrl'
       });
+
+    // the community
 
     $stateProvider
       .state('post', {

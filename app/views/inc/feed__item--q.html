@@ -1,12 +1,12 @@
 <div class="list card">
   <div class="item item-avatar">
     <img ng-src="{{feed.author.pic}}">
-    <h2 class="royal" ng-cloak><b>{{feed.author.name}}</b></h2>
-    <p ng-cloak>{{feed.dateCreated | date:'fullDate'}}</p>
+    <h2 class="royal"><b>{{feed.author.name}}</b></h2>
+    <p>{{feed.dateCreated | date:'fullDate'}}</p>
   </div>
   <div class="item item-body">
-    <h2 class="royal" ng-cloak><b><a href="#/post/{{feed.id}}">{{feed.title}}</a></b></h2>
-    <p ng-cloak>
+    <h2 class="royal"><b><a href="#/post/{{feed.id}}">{{feed.title}}</a></b></h2>
+    <p>
       {{feed.content | excerpt:160}}
     </p>
   </div>

@@ -1,0 +1,31 @@
+<ion-side-menus>
+  <ion-pane ion-side-menu-content>
+      
+      <ion-view title="'Home'" left-buttons="leftButtons" overflow-scroll="true">
+        <form action="" ng-submit="send()" class="row">
+          <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper">
+              <i class="icon ion-ios7-chatbubble-outline placeholder-icon"></i>
+              <input type="text" placeholder="Say anything!" ng-model="user.query">
+            </label>
+            <button class="button button-dark col col-25 ">
+              Send
+            </button>
+          </div>
+        </form>
+        <ion-content has-header="true" padding="true" scroll-if>
+          <div class="clear" ng-repeat="message in conversation" scroll-item>
+
+            <div class="dialog card {{message.type}}">
+              <div class="item item-text-wrap">
+                {{message.content}}
+              </div>
+            </div>
+
+          </div>
+
+        </ion-content>
+      </ion-view>
+    </ion-pane>
+  <ng-include src="'views/inc/side-left.html'"></ng-include>
+</ion-side-menus>

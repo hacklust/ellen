@@ -23,7 +23,7 @@ angular.module('ellenApp')
 
     $scope.leftButtons = [
       { 
-        type: 'button-positive',
+        type: 'button-clear',
         content: '<i class="icon ion-navicon"></i>',
         tap: function(e) {
           $scope.toggleMenu();

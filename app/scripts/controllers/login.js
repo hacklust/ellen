@@ -1,69 +1,59 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('LoginController', function($scope, simpleLogin, $location) {
-    $scope.pass = '';
-    $scope.err = '';
-    $scope.confirm = '';
+  .controller('LoginCtrl', function($scope, Auth, UserService, $ionicLoading, $rootScope, $firebase, $timeout) {
+    $scope.err = false;
     $scope.createMode = false;
-    $scope.user = '';
+    $scope.user = {};
 
-    $scope.login = function(service) {
-      simpleLogin.login(service, function(err) {
-        $scope.err = err? err + '' : null;
+    $scope.login = function(isValid) {
+      if (isValid) {
+        $scope.showLoading();
+        Auth.login($scope.user).then(function(authUser){
+          $scope.hideLoading();
+          UserService.login(authUser);
+        });
+        $rootScope.$on('$firebaseSimpleLogin:error', function (e, authUser) {
+          $scope.err = authUser.code;
+          $scope.hideLoading();
+          $timeout(function(){
+            $scope.err = false; 
+          }, 2400);
+
+        });
+      };
+      
+      
+      
+    }
+
+    $scope.register = function(isValid) {
+      if (isValid) {
+        console.log(isValid);
+        Auth.createAccount($scope.user).then(function(authUser){
+          UserService.create(authUser, $scope.user);
+        });
+      };
+    }
+
+    $scope.logout = function() {
+      Auth.logout();
+    }
+
+    // ui
+
+    $scope.showLoading = function() {
+      $scope.loading = $ionicLoading.show({
+        content: 'Please wait...<br><i class="ion-load-c"></i>',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 100
       });
     };
 
-    $scope.loginPassword = function(cb) {
-      $scope.err = null;
-      if( !$scope.email ) {
-        $scope.err = 'Please enter an email address';
-      }
-      else if( !$scope.pass ) {
-        $scope.err = 'Please enter a password';
-      }
-      else {
-        simpleLogin.loginPassword($scope.email, $scope.pass, function(err, user) {
-          $scope.err = err? err + '' : null;
-          if( !err && cb ) {
-            cb(user);
-          }
-        });
-      }
-    };
-
-    $scope.logout = simpleLogin.logout;
-
-    $scope.createAccount = function() {
-      console.log($scope.email1);
-      function assertValidLoginAttempt() {
-        if( !$scope.email ) {
-          $scope.err = 'Please enter an email address';
-        }
-        else if( !$scope.pass ) {
-          $scope.err = 'Please enter a password';
-        }
-        else if( $scope.pass !== $scope.confirm ) {
-          $scope.err = 'Passwords do not match';
-        }
-        return !$scope.err;
-      }
-
-      $scope.err = null;
-      if( assertValidLoginAttempt() ) {
-        simpleLogin.createAccount($scope.email, $scope.pass, function(err, user) {
-          if( err ) {
-            $scope.err = err? err + '' : null;
-          }
-          else {
-            // must be logged in before I can write to my profile
-            $scope.login(function() {
-              simpleLogin.createProfile(user.uid, user.email);
-              $location.path('/account');
-            });
-          }
-        });
-      }
+    $scope.hideLoading = function() {
+      $scope.loading.hide();
     };
 
   });

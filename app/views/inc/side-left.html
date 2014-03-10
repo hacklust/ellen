@@ -1,8 +1,65 @@
-<ion-side-menu side="left">
-  <header class="bar bar-header bar-dark item-input-inset" id="menu-left" class="menu menu-left sidebar">
-    <label class="item-input-wrapper search">
+<!-- Left menu -->
+<ion-side-menu side="left" class="menu menu-left sidebar">
+  <header class="bar bar-header bar-dark item-input-inset">
+    <h1 class="title energized"><b>Navigation</b></h1>
+    <!-- <label class="item-input-wrapper search">
       <i class="icon ion-ios7-search placeholder-icon"></i>
       <input type="search" placeholder="Search">
-    </label>
+    </label> -->
   </header>
+  <ion-content has-bouncing="true" has-header="true">
+    
+    <list>
+      <a class="item item-avatar" href="#/user/{{currentUser.id}}">
+        <img ng-src="{{currentUser.pic}}">
+        <h2>{{currentUser.name}}</h2>
+        <p>View your profile</p>
+      </a>
+
+      <a class="item item-icon-left" href="#/">
+        <i class="royal icon ion-ios7-paperplane-outline"></i>
+        News Feed
+      </a>
+
+      <a class="item item-icon-left" href="#/ellen">
+        <i class="positive icon ion-ios7-chatbubble-outline"></i>
+        Chat with Ellen
+      </a>
+
+      <a class="item item-icon-left" href="#/articles">
+        <i class="calm icon ion-ios7-copy-outline"></i>
+        Read Articles
+      </a>
+
+      <a class="item item-icon-left" href="#/questions">
+        <i class="balanced icon ion-ios7-help-outline"></i>
+        Browse Questions
+      </a>
+
+      <a ng-controller="HomeCtrl" class="item item-icon-left " href="" ng-click="openModal()">
+        <i class="energized icon ion-ios7-compose-outline"></i>
+        Ask
+      </a>
+
+<!--       <a class="item item-icon-left" href="#/rights">
+        <i class="energized icon ion-ios7-lightbulb-outline"></i>
+        Know your Rights
+      </a> -->
+
+      <a class="item item-icon-left" href="#/report">
+        <i class="brave icon ion-ios7-folder-outline"></i>
+        Report Violence
+      </a>
+
+      <a class="item item-icon-left" href="#/about">
+        <i class="assertive icon ion-ios7-bolt-outline"></i>
+        About this App
+      </a>
+
+      <a ng-controller="LoginCtrl"  class="item item-icon-left" href="" ng-click="logout()">
+        <i class="sassy icon ion-ios7-locked-outline"></i>
+        Logout
+      </a>
+    </list>
+  </ion-content>
 </ion-side-menu>

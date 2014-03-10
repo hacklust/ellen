@@ -60,6 +60,21 @@ angular.module('ellenApp', [
         controller: 'PostCtrl'
       });
 
+    $stateProvider
+      .state('questions', {
+        authRequired: true,
+        url: '/questions',
+        templateUrl: 'views/home.html',
+        controller: 'QuestionsCtrl'
+      });
+
+    $stateProvider
+      .state('articles', {
+        authRequired: true,
+        url: '/articles',
+        templateUrl: 'views/home.html',
+        controller: 'ArticlesCtrl'
+      });
 
     // the user
 
@@ -88,12 +103,6 @@ angular.module('ellenApp', [
         controller: 'ReportCtrl'
       });
 
-    $stateProvider
-      .state('questions', {
-        authRequired: true,
-        url: '/questions',
-        templateUrl: 'views/home.html',
-        controller: 'QuestionsCtrl'
-      });
+    
 
   });

@@ -3,6 +3,8 @@
 angular.module('ellenApp')
   .controller('HomeCtrl', function ($scope, $ionicModal, FeedService, VoteService) {
 
+    $scope.feedType = 'Home';
+
     // data
     $scope.feeds = FeedService.all;
 
@@ -11,7 +13,7 @@ angular.module('ellenApp')
     $scope.submitPost = function(isValid) {
       if (isValid) {
         // hard-coded  // article for web app only
-        $scope.post.type = 'article';
+        $scope.post.type = 'question';
         FeedService.add($scope.post).then(function(){
           $scope.modal.hide();
           $scope.post = {};

@@ -1,15 +1,13 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('QuestionService', function ($firebase, firebaseRef, UserService) {
+  .factory('QuestionService', function ($firebase, firebaseRef) {
 
-    var ref = firebaseRef('/feeds');
+    var ref = firebaseRef('/types/question');
     // get all questions
-    var feeds = $firebase(ref.startAt('question').endAt('question'));
-    feeds.$on('loaded', function(ref){
-      console.log(ref);
-    })
+    var questions = $firebase(ref);
+
     return {
-      all: feeds
+      all: questions
     }
   });

@@ -1,19 +1,24 @@
 'use strict';
 
 angular.module('ellenApp')
-  .filter('reverse', function() {
-    return function(items) {
-      if(typeof items === 'object') {
-        var array = [];
-        for(var key in items){
-          if(!items.hasOwnProperty(key)){
-            continue;
-          }
-          items[key].name = key;
-          array.push(key, items[key]);
+  .filter('reverse', function () {
+    function toArray(list) {
+      var k, out = [];
+      if( list ) {
+        if( angular.isArray(list) ) {
+          out = list;
         }
-        return array.slice().reverse();
+        else if( typeof(list) === 'object' ) {
+          for (k in list) {
+            if (list.hasOwnProperty(k)) {
+              out.push(list[k]);
+            }
+          }
+        }
       }
-      return items.slice().reverse();
-    };
+        return out;
+      }
+      return function(items) {
+        return toArray(items).slice().reverse();
+      };
   });

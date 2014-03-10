@@ -1,30 +1,13 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('ArticleService', function ($firebase, firebaseRef, UserService) {
-    // ref questions
-    var ref = firebaseRef('/feeds');
+  .factory('ArticleService', function ($firebase, firebaseRef) {
+
+    var ref = firebaseRef('/types/article');
     // get all questions
-    var feeds = $firebase(ref.startAt('article').endAt('article'));
+    var articles = $firebase(ref);
 
     return {
-      all: feeds,
-      add: function(article) {
-        var user = UserService.getCurrent();
-
-        article.created = Firebase.ServerValue.TIMESTAMP;
-        article.author = {id: user.id, name: user.name, pic: user.pic};
-        article.score = 0;
-        article.type = 'article';
-        article.$priority = Date.now();
-
-        feeds.$add(article).then(function(ref){
-          ref.setPriority('article');
-          user.$child('articles').$child(ref.name()).$set({id: ref.name()});
-        });
-      },
-      find: function(id) {
-        return feeds.$child(id);
-      }
-    };
+      all: articles
+    }
   });

@@ -11,7 +11,9 @@ angular.module('ellenApp')
   .constant('loginRedirectPath', '/login')
 
   // which login service we're using
-  .constant('loginProviders', 'facebook')
-
   // your Firebase URL goes here
   .constant('FBURL', 'https://ellen.firebaseio.com');
+  .constant('loginProviders', 'facebook,twitter,password')
+
+  // your Firebase URL goes here
+  .constant('FBURL', 'https://mcw.firebaseio.com');

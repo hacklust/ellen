@@ -2,7 +2,6 @@
 
 angular.module('ellenApp')
   .controller('AboutCtrl', function ($scope) {
-
     $scope.toggleMenu = function() {
       $scope.sideMenuController.toggleLeft();
     };
@@ -16,5 +15,4 @@ angular.module('ellenApp')
         }
       }
     ];
-
   });

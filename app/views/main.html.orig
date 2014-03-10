@@ -1,0 +1,85 @@
+<<<<<<< HEAD
+<p>This is the main view.</p>
+<article ng-repeat="(id, feed) in feeds">
+  <h1><a href="{{feed.type}}/{{id}}"></a>{{feed.title}}</a></h1>
+  <p>
+    {{feed.content}}
+  </p>
+  <blockquote>
+    {{feed.authorID}}
+  </blockquote>
+</article>
+
+<table>
+  <tr ng-repeat="(id, user) in users">
+    <td>{{id}}</td>
+    <td>{{user.uid}}</td>
+    <td>{{user.name}}</td>
+    <td><a href="http://facebook.com/{{user.id}}">Facebook</a></td>
+  </tr>
+</table>
+
+<button ng-click="create()">Create</button>
+<button ng-click="answer()">Answer</button>
+<button ng-click="write()">Write</button>
+<button ng-click="createUser()">Register User</button>
+=======
+<ion-side-menus>
+  <ion-pane ion-side-menu-content>
+      <ion-nav-bar animation="nav-title-slide-ios7" 
+           type="bar-royal" 
+           back-button-type="button-icon" 
+           back-button-icon="ion-chevron-left"></ion-nav-bar>
+      <ion-view title="'Home'" left-buttons="leftButtons" right-buttons="rightButtons">
+        <ion-content has-header="true" padding="true" has-footer="true">
+          <div class="header">
+            <ul class="nav nav-pills pull-right">
+              <li class="active"><a ng-href="#">Home</a></li>
+              <li><a ng-href="#">About</a></li>
+              <li><a ng-href="#" ng-click="show()">Contact</a></li>
+              <li ng-cloak ng-show-auth="login" ng-controller="LoginCtrl"><a href="#" ng-click="logout()">Log Out</a></li>
+              <li><a href="#/login">Log In</a></li>
+            </ul>
+            <h3 class="text-muted">ellen</h3>
+          </div>
+
+          <div class="jumbotron">
+            <h1>'Allo, 'Allo!</h1>
+            <p class="lead">
+              <img src="images/yeoman.png" alt="I'm Yeoman"><br>
+              Always a pleasure scaffolding your apps.
+            </p>
+            <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
+          </div>
+
+          <div class="row marketing">
+            <h4>HTML5 Boilerplate</h4>
+            <p>
+              HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
+            </p>
+
+            <h4>Angular</h4>
+            <p>
+              AngularJS is a toolset for building the framework most suited to your application development.
+            </p>
+
+            <h4>Karma</h4>
+            <p>Spectacular Test Runner for JavaScript.</p>
+          </div>
+
+          <div class="footer">
+            <p>♥ from the Yeoman team</p>
+          </div>
+        </ion-content>
+        <ion-footer-bar class="bar bar-footer bar-light padding-left">
+        <form ng-submit="processRequest()" class="row">
+          <input id="query" name="query" type="text" placeholder="Say anything!" class="col padding-horizontal" ng-model="user.query" />
+          <input type="submit" value="Send" class="col col-25 button button-dark" />
+        </form>
+      </ion-footer-bar>
+      </ion-view>
+    </ion-pane>
+    <ng-include src="'views/inc/side-left.html'"></ng-include>
+  <!-- <ion-side-menu side="left"></ion-side-menu> -->
+</ion-side-menus>
+>>>>>>> development

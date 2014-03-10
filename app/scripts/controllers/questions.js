@@ -1,16 +1,27 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('QuestionsCtrl', function ($location, $scope, QuestionService, FeedService) {
-    
+  .controller('QuestionsCtrl', function ($scope, QuestionService, FeedService) {
+
+    $scope.feedType = 'Questions';
+
+    $scope.feeds = [];
     $scope.questions = QuestionService.all;
 
-    $scope.question = {};
-    $scope.ask = function () {
-      QuestionService.add($scope.question);
-      $scope.question = {};
-      $location.path('/');
-    }
+    $scope.questions.$on('loaded', function(ref){
+      // workaround
+      if (ref === undefined) {
+        angular.forEach(ref, function(a){
+          console.log(a);
+        });
+      } else {
+        angular.forEach(ref, function(a){
+          $scope.feeds.push(FeedService.findById(a.id));
+        });
+      }
+
+    })
+
     $scope.toggleMenu = function() {
       $scope.sideMenuController.toggleLeft();
     };
@@ -24,17 +35,5 @@ angular.module('ellenApp')
         }
       }
     ];
-
-    $scope.upVoteFeed = function (feedId, upVoted) {
-      if (upVoted) {
-        FeedService.clearvote(feedId, upVoted);
-      } else {
-        FeedService.upvote(feedId);
-      }
-    }
-
-    $scope.upVoted  = function(feed) {
-      return FeedService.upvoted(feed);
-    }
 
   });

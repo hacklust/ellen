@@ -1,0 +1,32 @@
+'use strict';
+
+<<<<<<< HEAD
+describe('Service: articleservice', function () {
+=======
+describe('Service: ArticleService', function () {
+>>>>>>> development
+
+  // load the service's module
+  beforeEach(module('ellenApp'));
+
+  // instantiate service
+<<<<<<< HEAD
+  var articleservice;
+  beforeEach(inject(function (_articleservice_) {
+    articleservice = _articleservice_;
+  }));
+
+  it('should do something', function () {
+    expect(!!articleservice).toBe(true);
+=======
+  var ArticleService;
+  beforeEach(inject(function (_ArticleService_) {
+    ArticleService = _ArticleService_;
+  }));
+
+  it('should do something', function () {
+    expect(!!ArticleService).toBe(true);
+>>>>>>> development
+  });
+
+});

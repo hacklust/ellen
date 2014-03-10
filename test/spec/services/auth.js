@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: auth', function () {
+describe('Service: Auth', function () {
 
   // load the service's module
   beforeEach(module('ellenApp'));
 
   // instantiate service
-  var auth;
-  beforeEach(inject(function (_auth_) {
-    auth = _auth_;
+  var Auth;
+  beforeEach(inject(function (_Auth_) {
+    Auth = _Auth_;
   }));
 
   it('should do something', function () {
-    expect(!!auth).toBe(true);
+    expect(!!Auth).toBe(true);
   });
 
 });

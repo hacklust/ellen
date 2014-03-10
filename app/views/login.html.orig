@@ -1,0 +1,80 @@
+<<<<<<< HEAD
+<!-- wait for auth to resolve (avoid flashing login page before redirect -->
+<ion-view title="'Welcome to Ellen'">
+    <ion-content class="center login" has-bouncing="true" has-header="true">
+        <img class="full-image logo" src="images/logo.png" />
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="text" placeholder="Email" ng-model="user.email">
+          </label>
+          <label class="item item-input">
+            <input type="password" placeholder="Password" ng-model="user.password">
+          </label>
+          <button ng-click="login()" class="button button-block button-dark-blue icon-left">
+            <i class="icon ion-ios7-unlocked padding-horizontal"></i>
+            Login
+          </button>
+          
+        </div>
+        <p class="login-p">
+          New User?<a href="#/register" class="login-register energized"> Register Now!</a>
+        </p>
+<!--         <button ng-click="login('facebook')" class="button button-dark-blue icon-left">
+            <i class="icon ion-social-facebook padding-horizontal"></i>
+            Login via Facebook
+        </button> -->
+    </ion-content>
+</ion-view>
+=======
+<ion-side-menus>
+  <ion-pane ion-side-menu-content>
+    <ion-view title="'Welcome to Ellen'">
+      <ion-content class="center login" has-bouncing="true">
+        <img class="full-image logo" src="images/logo.png" />
+        
+        <form name="loginForm" novalidate>
+        <!-- <p ng-show="loginForm.name.$invalid && !loginForm.name.$pristine" class="energized"><b>You name is required.</b></p>
+        <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="energized"><b>Enter a valid email.</b></p> -->
+        <p ng-show="err" class="energized fade">{{err}}</p>
+        <div class="list list-inset">
+          <label class="item item-input" ng-show="createMode">
+            <i ng-show="loginForm.name.$invalid && !loginForm.name.$pristine" class="icon ion-ios7-information-outline assertive placeholder-icon"></i>
+            <input name="name" type="text" placeholder="Full Name" ng-model="user.name" ng-required="createMode">
+          </label>
+          <label class="item item-input">
+            <i ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="icon ion-ios7-information-outline assertive placeholder-icon"></i>
+            <input name="email" type="email" placeholder="Email" ng-model="user.email" required>
+          </label>
+          <label class="item item-input">
+            <i ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="icon ion-ios7-information-outline assertive placeholder-icon"></i>
+            <input name="password" type="password" placeholder="Password" ng-model="user.password" required>
+          </label>
+          
+          <button ng-hide="createMode" ng-click="login(loginForm.$valid)" class="button button-royal button-block icon-left" ng-disabled="loginForm.$invalid">
+            <i class="icon ion-ios7-unlocked padding-horizontal"></i>
+            Login
+          </button>
+          <div class="row" ng-show="createMode" >
+            <button ng-click="createMode = false" class="button button-energized icon-left col">
+              <i class="icon ion-ios7-close-empty padding-horizontal"></i>
+              Cancel
+            </button>
+            <button ng-click="register(loginForm.$valid)" class="button button-calm icon-left col" ng-disabled="loginForm.$invalid">
+              <i class="icon ion-ios7-checkmark-empty padding-horizontal"></i>
+              Register
+            </button>
+          </div>
+        </div>
+        </form>
+        <p class="login-p" ng-hide="createMode">
+          New User?<a href="" class="login-register energized" ng-click="createMode = true"> Register Now!</a>
+        </p>
+      </ion-content>
+      
+    </ion-view>
+  </ion-pane>
+  <!-- <ng-include src="'views/inc/side-left.html'"></ng-include> -->
+</ion-side-menus>
+
+<!-- wait for auth to resolve (avoid flashing login page before redirect -->
+>>>>>>> development

@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: Userservice', function () {
+describe('Service: UserService', function () {
 
   // load the service's module
   beforeEach(module('ellenApp'));
 
   // instantiate service
-  var Userservice;
-  beforeEach(inject(function (_Userservice_) {
-    Userservice = _Userservice_;
+  var UserService;
+  beforeEach(inject(function (_UserService_) {
+    UserService = _UserService_;
   }));
 
   it('should do something', function () {
-    expect(!!Userservice).toBe(true);
+    expect(!!UserService).toBe(true);
   });
 
 });

@@ -6,21 +6,32 @@ angular.module('ellenApp')
     $scope.url = '#/users/' + $stateParams.id;
     $scope.id = $stateParams.id;
 
-    $scope.user.$on('loaded', populateSubmissions);
-
-    function populateSubmissions () {
+    $scope.user.$on('loaded', function(ref){
       $scope.questions = [];
-      $scope.articles = [];
+      $scope.answers = [];
+      // fucking workaround
+      if (ref === undefined) {
+        angular.forEach($scope.user.question, function(q){
+          $scope.questions.push(FeedService.findById(q.id));
+        });
 
-      angular.forEach($scope.user.questions, function(qid){
-        $scope.questions.push(FeedService.find(qid));
-      });
+        angular.forEach($scope.user.answers, function(a){
+          var question = FeedService.findById(a.questionId);
+          $scope.answers.push(question.$child('answers').$child(a.id));
+        });
+      } else {
+        angular.forEach(ref.question, function(q){
+          $scope.questions.push(FeedService.findById(q.id));
+        });
 
-      angular.forEach($scope.user.articles, function(id){
-        $scope.articles.push(FeedService.find(id.id));
-      });
+        angular.forEach(ref.answers, function(a){
+          var question = FeedService.findById(a.questionId);
+          $scope.answers.push(question.$child('answers').$child(a.id));
+        });
 
-    }
+      }
+      
+    });
 
     $scope.toggleMenu = function() {
       $scope.sideMenuController.toggleLeft();
@@ -35,5 +46,4 @@ angular.module('ellenApp')
         }
       }
     ];
-    
   });

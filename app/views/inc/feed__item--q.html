@@ -1,0 +1,39 @@
+<div class="list card">
+  <div class="item item-avatar">
+    <img ng-src="{{feed.author.pic}}">
+    <h2 class="royal"><b>{{feed.author.name}}</b></h2>
+    <p>{{feed.dateCreated | date:'fullDate'}}</p>
+  </div>
+  <div class="item item-body">
+    <h2 class="royal"><b><a href="#/post/{{feed.id}}">{{feed.title}}</a></b></h2>
+    <p>
+      {{feed.content | excerpt:160}}
+    </p>
+    <p>
+      <a href="" class="subdued">{{feed.score}} 
+        <ng-pluralize count="feed.score" when="{'0': 'Points', '1' : 'Point', 'other' : 'Points'}"></ng-pluralize></a>
+      </a>
+      <a href="" class="subdued">
+        {{feed.answerCount}} 
+        <ng-pluralize count="feed.answerCount" when="{'0': 'Answers', '1' : 'Answer', 'other' : 'Answers'}"></ng-pluralize></a>
+      </a>
+    </p>
+  </div>
+  
+  <!-- voting tabs! -->
+  <div class="item tabs tabs-secondary tabs-icon-left">
+    <a ng-controller="VoteCtrl"  class="tab-item" href="" ng-click="upvote(feed.id)">
+      <i class="icon ion-chevron-up"></i>
+      Upvote
+    </a>
+    <a ng-controller="VoteCtrl"  class="tab-item" href="" ng-click="downvote(feed.id)">
+      <i class="icon ion-chevron-down"></i>
+      Downvote
+    </a>
+    <a class="tab-item" href="#/post/{{feed.id}}">
+      <i class="icon ion-compose"></i>
+      Answer
+    </a>
+  </div>
+
+</div>

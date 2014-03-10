@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('chatbotService', function ($http) {
+  .factory('ChatbotService', function ($http) {
     return {
-      sendMessage: function(obj) {
+      send: function(obj) {
         return $http({
           url: 'http://www.nelonoel.com/app/bot.php',
           data: {
@@ -25,4 +25,5 @@ angular.module('ellenApp')
         });
       }
     };
+
   });

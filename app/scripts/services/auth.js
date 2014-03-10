@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ellenApp')
-  .factory('Auth', function ($rootScope, $firebaseSimpleLogin, firebaseRef, $timeout, UserService) {
-    
+  .factory('Auth', function ($rootScope, $firebaseSimpleLogin, firebaseRef, $timeout) {
+
     var ref = firebaseRef();
     var auth = $firebaseSimpleLogin(ref);
 
@@ -16,46 +16,26 @@ angular.module('ellenApp')
       init: function() {
         return auth;
       },
+      login: function(user) {
+        assertAuth();
+        return auth.$login('password', user);
+      },
       logout: function() {
         assertAuth();
         return auth.$logout();
       },
-      signedIn: function () {
-        return auth.user !== null;
-      },
 
-      register: function(user) {
+      createAccount: function(user) {
+        assertAuth();
         return auth.$createUser(user.email, user.password);
       },
-
-      login: function(user) {
-        return auth.$login('password', user);
+      isLoggedIn: function() {
+        return auth.user !== null;
       }
-      // login with facebook as provider
-      // login: function(provider, callback){
-      //   // here it comes
-      //   assertAuth()
-      //   auth.$login(provider, {rememberMe : true}).then(function(user){
-      //     var userRef = firebaseRef('users/' + user.id);
-      //     userRef.once('value', function(snapshot){
-      //       var val = snapshot.val();
-      //       // if user already exists
-      //       console.log('echoing val');
-      //       if(!val) {
-      //         console.log('first time user');
-      //         UserService.create(user)
-      //       } else {
-
-      //         console.log('returning user');
-      //         console.log(user.id);
-      //         UserService.setCurrent(user.id);
-      //       }
-      //     })
-      //   });
-      // }
     }
 
-
     Auth.init();
+
     return Auth;
-  })
+
+  });

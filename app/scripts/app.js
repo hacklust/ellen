@@ -14,37 +14,33 @@ angular.module('ellenApp', [
 ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
-    // default
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-      .state('home',{
-        authRequired: true, // add this to routes that need authentication :D require to all
+      .state('main', {
+        authRequired: true,
         url: '/',
-        templateUrl: 'views/mobilehome.html',
+        templateUrl: 'views/home.html',
         controller: 'HomeCtrl'
       });
 
     $stateProvider
-      .state('logout', {
-        authRequired: true, // add this to routes that need authentication :D require to all
-        url: '/logout',
-        controller: 'LogoutCtrl'
+      .state('home', {
+        authRequired: true,
+        url: '/home',
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
       });
 
     $stateProvider
       .state('login', {
+        authRequired: false,
         url: '/login',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       });
 
-    $stateProvider
-      .state('register', {
-        url: '/register',
-        templateUrl: 'views/register.html',
-        controller: 'LoginCtrl'
-      });
+    // the bot
 
     $stateProvider
       .state('ellen', {
@@ -54,7 +50,44 @@ angular.module('ellenApp', [
         controller: 'EllenCtrl'
       });
 
-    // static pages
+    // the community
+
+    $stateProvider
+      .state('post', {
+        authRequired: true,
+        url: '/post/:id',
+        templateUrl: 'views/post.html',
+        controller: 'PostCtrl'
+      });
+
+    $stateProvider
+      .state('questions', {
+        authRequired: true,
+        url: '/questions',
+        templateUrl: 'views/home.html',
+        controller: 'QuestionsCtrl'
+      });
+
+    $stateProvider
+      .state('articles', {
+        authRequired: true,
+        url: '/articles',
+        templateUrl: 'views/home.html',
+        controller: 'ArticlesCtrl'
+      });
+
+    // the user
+
+    $stateProvider
+      .state('user', {
+        authRequired: true,
+        url: '/user/:id',
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl'
+      });
+
+
+    // miscellaneous
     $stateProvider
       .state('about', {
         authRequired: true,
@@ -70,74 +103,4 @@ angular.module('ellenApp', [
         templateUrl: 'views/report.html',
         controller: 'ReportCtrl'
       });
-
-    // dynamic pages: question
-
-    $stateProvider
-      .state('question',{
-        url: '/question/:id',
-        templateUrl: 'views/singlequestion.html',
-        controller: 'SingleQuestionCtrl'
-      })
-      .state('question.answers', {
-        url: '/question/a/',
-        templateUrl: 'views/answers.html',
-        controller: 'QuestionAnswersCtrl'
-      })
-      .state('question.answer.id', {
-        url: '/question/a/:id',
-        templateUrl: '/views/singleAnswer.html'
-      });
-
-    $stateProvider
-      .state('questions', {
-        authRequired: true,
-        url: '/questions',
-        templateUrl: 'views/questions.html',
-        controller: 'QuestionsCtrl'
-      })
-      .state('ask', {
-        url: '/questions/ask',
-        templateUrl: 'views/ask.html',
-        controller: 'QuestionsCtrl'
-      })
-      .state('questions.category',{
-        url: '/question/:cat',
-      })
-
-    // articles | similar to questions
-
-    $stateProvider
-      .state('article', {
-        url: '/article/:id',
-        templateUrl: 'views/singleArticle.html',
-        controller: 'SingleArticleCtrl'
-      });
-      
-    $stateProvider
-      .state('articles', {
-        authRequired: true,
-        url: '/articles',
-        templateUrl: 'views/articles.html',
-        controller: 'ArticlesCtrl'
-      });
-    $stateProvider
-      .state('write', {
-        url: '/articles/write',
-        templateUrl: 'views/write.html',
-        controller: 'ArticlesCtrl'
-      });
-      
-
-    // users now
-
-    $stateProvider
-      .state('user', {
-        authRequired: true,
-        url: '/user/:id',
-        templateUrl: 'views/user.html',
-        controller: 'UserCtrl'
-      });
-
   });
-

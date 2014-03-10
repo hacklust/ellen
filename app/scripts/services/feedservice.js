@@ -2,85 +2,32 @@
 
 angular.module('ellenApp')
   .factory('FeedService', function ($firebase, firebaseRef, UserService) {
-    // ref feeds
-    var ref = firebaseRef('/feeds');
-    // get all feeds
-    var feeds = $firebase(ref.limit(50));
+    
+    var ref = firebaseRef();
+    var fb = $firebase(ref);
+    var feeds = fb.$child('feeds');
 
     return {
       all: feeds,
-      find: function(feedId) {
-        return feeds.$child(feedId);
+      add: function(post) {
+        var user = UserService.getCurrent();
+
+        post.dateCreated = Firebase.ServerValue.TIMESTAMP;
+        post.author = {id: user.id, name: user.name, pic: user.pic};
+        post.upvotes = 0;
+
+        return feeds.$add(post).then(function(refPost){
+          // add id
+          feeds.$child(refPost.name()).$child('id').$set(refPost.name());
+          // persist post to author
+          user.$child(post.type).$child(refPost.name()).$set({id: refPost.name()});
+          // persist type
+          fb.$child('types').$child(post.type).$child(refPost.name()).$set({id: refPost.name()});
+
+        })
       },
-      upvote: function(feedId, answer) {
-        if(UserService.signedIn()){
-          var user = UserService.getCurrent();
-
-          var feed = feeds.$child(feedId);
-
-          feed.$child('upvotes').$child(user.id).$set(user.id).then(function(){
-            user.$child('upvotes').$child(feedId).$set(feedId);
-            feed.$child('downotes').$remove(user.id);
-            user.$child('downvotes').$remove(feedId);
-
-            feed.$child('score').$transaction(function(score){
-              if(!score) {
-                return 1;
-              }
-
-              return score + 1;
-            })
-          })
-        }
-      },
-      downvote: function(feedId) {
-        if(UserService.signedIn()){
-          var user = UserService.getCurrent();
-          var feed = feeds.$child(feedId);
-
-          feed.$child('downvotes').$child(user.id).$set(user.id).then(function(){
-            user.$child('downvotes').$child(feedId).$set(feedId);
-            feed.$child('upvotes').$remove(user.id);
-            user.$child('upvotes').$remove(feedId);
-
-            feed.$child('score').$transaction(function(score){
-              if(score === undefined || score === null) {
-                return -1;
-              }
-
-              return score - 1;
-            })
-          })
-        }
-      },
-      clearvote: function(feedId, upvoted) {
-        if(UserService.signedIn()){
-          var user = UserService.getCurrent();
-          var userId = user.id;
-          var feed = feeds.$child(feedId);
-
-          feed.$child('upvotes').$remove(userId);
-          feed.$child('downvotes').$remove(userId);
-          user.$child('upvotes').$remove(feedId);
-          user.$child('downvotes').$remove(feedId);
-          feed.$child('score').$transaction(function(score){
-            if(upvoted) {
-              return score - 1;
-            } else {
-              return score + 1;
-            }
-          })
-        }
-      },
-      upvoted: function(feed) {
-        if (UserService.signedIn() && feed.upvotes) {
-          return feed.upvotes.hasOwnProperty(UserService.getCurrent().id);
-        };
-      },
-      downvoted: function(feed) {
-        if (UserService.signedIn() && feed.downvotes) {
-          return feed.downvotes.hasOwnProperty(UserService.getCurrent().id)
-        };
+      findById: function(id){
+        return feeds.$child(id);
       }
-    };
+    }
   });

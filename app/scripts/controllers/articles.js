@@ -1,17 +1,25 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('ArticlesCtrl', function ($scope, ArticleService, FeedService, $location) {
+  .controller('ArticlesCtrl', function ($scope, ArticleService, FeedService) {
+    
+    $scope.feedType = 'Articles';
 
+    $scope.feeds = [];
     $scope.articles = ArticleService.all;
 
-    $scope.article ={};
-
-    $scope.write = function() {
-      ArticleService.add($scope.article);
-      $scope.article ={};
-      $location.path('/');
-    }
+    $scope.articles.$on('loaded', function(ref){
+      // workaround
+      if (ref === undefined) {
+        angular.forEach(ref, function(a){
+          console.log(a);
+        });
+      } else {
+        angular.forEach(ref, function(a){
+          $scope.feeds.push(FeedService.findById(a.id));
+        });
+      }
+    });
 
     $scope.toggleMenu = function() {
       $scope.sideMenuController.toggleLeft();
@@ -27,15 +35,4 @@ angular.module('ellenApp')
       }
     ];
 
-    $scope.upVoteFeed = function (feedId, upVoted) {
-      if (upVoted) {
-        FeedService.clearvote(feedId, upVoted);
-      } else {
-        FeedService.upvote(feedId);
-      }
-    }
-
-    $scope.upVoted  = function(feed) {
-      return FeedService.upvoted(feed);
-    }
   });

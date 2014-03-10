@@ -1,0 +1,61 @@
+<<<<<<< HEAD
+<a ng-click="logout()">Logout</a> | <a href="#/login">Login</a>
+<form ng-submit="ask()">
+  <input type="text" ng-model="question.title" placeholder="title" class="form-control">
+  <textarea cols="30" rows="10" ng-model="question.content" placeholder="content" class="form-control"></textarea>
+  <input type="text" ng-model="question.category" class="form-control" placeholder="category">
+  <input type="submit" value="Ask" class="btn btn-primary">
+</form>
+
+<section ng-show="questions" ng-repeat="(id, q) in questions">
+  <article>
+    <h3>Title:<a href="#/questions/{{id}}">{{q.title}}</a> </h3>
+    <b>author: <a href="#/users/{{q.author.id}}">{{q.author.name}}</a></b>
+    <p>
+      {{q.content}}
+    </p>
+  </article>
+</section>
+
+<form ng-submit="write()">
+  <input type="text" ng-model="article.title" placeholder="title" class="form-control">
+  <textarea cols="30" rows="10" ng-model="article.content" placeholder="content" class="form-control"></textarea>
+  <input type="text" ng-model="article.category" class="form-control" placeholder="category">
+  <input type="submit" value="Write Article" class="btn btn-primary">
+</form>
+
+<section ng-show="articles" ng-repeat="(id, q) in articles">
+  <article>
+    <h3>Title:<a href="#/articles/{{id}}">{{q.title}}</a> </h3>
+    <b>author: <a href="#/users/{{q.author.id}}">{{q.author.name}}</a></b>
+    <p>
+      {{q.content}}
+    </p>
+  </article>
+</section>
+=======
+<ion-side-menus>
+  <ion-pane ion-side-menu-content>
+      <ion-nav-bar animation="nav-title-slide-ios7" 
+           type="bar-royal" 
+           back-button-type="button-icon" 
+           back-button-icon="ion-chevron-left"></ion-nav-bar>
+      <ion-view title="feedType" left-buttons="leftButtons" right-buttons="rightButtons">
+        <ion-content has-header="true" padding="true">
+        <!-- Load Feeds Here, use switch for each type of feed-->
+          <div ng-repeat="(id, feed) in feeds | orderByPriority | reverse" ng-switch on="feed.type">
+            <!-- when question -->
+            <div ng-switch-when="question">
+              <div ng-include="'views/inc/feed__item--q.html'"></div>
+            </div>
+            <!-- when article -->
+            <div ng-switch-when="article">
+              <div ng-include="'views/inc/feed__item--a.html'"></div>
+            </div>
+          </div>
+        </ion-content>
+      </ion-view>
+    </ion-pane>
+  <ng-include src="'views/inc/side-left.html'"></ng-include>
+</ion-side-menus>
+>>>>>>> development

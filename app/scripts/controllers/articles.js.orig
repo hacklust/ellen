@@ -1,0 +1,66 @@
+'use strict';
+
+angular.module('ellenApp')
+<<<<<<< HEAD
+  .controller('ArticlesCtrl', function ($scope, ArticleService, FeedService, $location) {
+
+    $scope.articles = ArticleService.all;
+
+    $scope.article ={};
+
+    $scope.write = function() {
+      ArticleService.add($scope.article);
+      $scope.article ={};
+      $location.path('/');
+    }
+=======
+  .controller('ArticlesCtrl', function ($scope, ArticleService, FeedService) {
+    
+    $scope.feedType = 'Articles';
+
+    $scope.feeds = [];
+    $scope.articles = ArticleService.all;
+
+    $scope.articles.$on('loaded', function(ref){
+      // workaround
+      if (ref === undefined) {
+        angular.forEach(ref, function(a){
+          console.log(a);
+        });
+      } else {
+        angular.forEach(ref, function(a){
+          $scope.feeds.push(FeedService.findById(a.id));
+        });
+      }
+    });
+>>>>>>> development
+
+    $scope.toggleMenu = function() {
+      $scope.sideMenuController.toggleLeft();
+    };
+    
+    $scope.leftButtons = [
+      {
+        type: 'button-clear',
+        content: '<i class="icon ion-navicon"></i>',
+        tap: function(e) {
+          $scope.toggleMenu();
+        }
+      }
+    ];
+
+<<<<<<< HEAD
+    $scope.upVoteFeed = function (feedId, upVoted) {
+      if (upVoted) {
+        FeedService.clearvote(feedId, upVoted);
+      } else {
+        FeedService.upvote(feedId);
+      }
+    }
+
+    $scope.upVoted  = function(feed) {
+      return FeedService.upvoted(feed);
+    }
+=======
+>>>>>>> development
+  });

@@ -1,0 +1,215 @@
+'use strict';
+
+angular.module('ellenApp', [
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'ngRoute',
+  'ui.router',
+  'firebase',
+  'angularfire.firebase',
+  'angularfire.login',
+  'simpleLoginTools',
+  'ionic'
+])
+  .config(function ($stateProvider, $urlRouterProvider) {
+
+<<<<<<< HEAD
+    // default
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('home',{
+        authRequired: true, // add this to routes that need authentication :D require to all
+        url: '/',
+        templateUrl: 'views/mobilehome.html',
+=======
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('main', {
+        authRequired: true,
+        url: '/',
+        templateUrl: 'views/home.html',
+>>>>>>> development
+        controller: 'HomeCtrl'
+      });
+
+    $stateProvider
+<<<<<<< HEAD
+      .state('logout', {
+        authRequired: true, // add this to routes that need authentication :D require to all
+        url: '/logout',
+        controller: 'LogoutCtrl'
+=======
+      .state('home', {
+        authRequired: true,
+        url: '/home',
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
+>>>>>>> development
+      });
+
+    $stateProvider
+      .state('login', {
+<<<<<<< HEAD
+=======
+        authRequired: false,
+>>>>>>> development
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      });
+
+<<<<<<< HEAD
+    $stateProvider
+      .state('register', {
+        url: '/register',
+        templateUrl: 'views/register.html',
+        controller: 'LoginCtrl'
+      });
+=======
+    // the bot
+>>>>>>> development
+
+    $stateProvider
+      .state('ellen', {
+        authRequired: true,
+        url: '/ellen',
+        templateUrl: 'views/ellen.html',
+        controller: 'EllenCtrl'
+      });
+
+<<<<<<< HEAD
+    // static pages
+    $stateProvider
+      .state('about', {
+        authRequired: true,
+        url: '/about',
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      });
+
+    $stateProvider
+      .state('report', {
+        authRequired: true,
+        url: '/report',
+        templateUrl: 'views/report.html',
+        controller: 'ReportCtrl'
+      });
+
+    // dynamic pages: question
+
+    $stateProvider
+      .state('question',{
+        url: '/question/:id',
+        templateUrl: 'views/singlequestion.html',
+        controller: 'SingleQuestionCtrl'
+      })
+      .state('question.answers', {
+        url: '/question/a/',
+        templateUrl: 'views/answers.html',
+        controller: 'QuestionAnswersCtrl'
+      })
+      .state('question.answer.id', {
+        url: '/question/a/:id',
+        templateUrl: '/views/singleAnswer.html'
+=======
+    // the community
+
+    $stateProvider
+      .state('post', {
+        authRequired: true,
+        url: '/post/:id',
+        templateUrl: 'views/post.html',
+        controller: 'PostCtrl'
+>>>>>>> development
+      });
+
+    $stateProvider
+      .state('questions', {
+        authRequired: true,
+        url: '/questions',
+<<<<<<< HEAD
+        templateUrl: 'views/questions.html',
+        controller: 'QuestionsCtrl'
+      })
+      .state('ask', {
+        url: '/questions/ask',
+        templateUrl: 'views/ask.html',
+        controller: 'QuestionsCtrl'
+      })
+      .state('questions.category',{
+        url: '/question/:cat',
+      })
+
+    // articles | similar to questions
+
+    $stateProvider
+      .state('article', {
+        url: '/article/:id',
+        templateUrl: 'views/singleArticle.html',
+        controller: 'SingleArticleCtrl'
+      });
+      
+=======
+        templateUrl: 'views/home.html',
+        controller: 'QuestionsCtrl'
+      });
+
+>>>>>>> development
+    $stateProvider
+      .state('articles', {
+        authRequired: true,
+        url: '/articles',
+<<<<<<< HEAD
+        templateUrl: 'views/articles.html',
+        controller: 'ArticlesCtrl'
+      });
+    $stateProvider
+      .state('write', {
+        url: '/articles/write',
+        templateUrl: 'views/write.html',
+        controller: 'ArticlesCtrl'
+      });
+      
+
+    // users now
+=======
+        templateUrl: 'views/home.html',
+        controller: 'ArticlesCtrl'
+      });
+
+    // the user
+>>>>>>> development
+
+    $stateProvider
+      .state('user', {
+        authRequired: true,
+        url: '/user/:id',
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl'
+      });
+
+<<<<<<< HEAD
+  });
+
+=======
+    // miscellaneous
+    $stateProvider
+      .state('about', {
+        authRequired: true,
+        url: '/about',
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      });
+
+    $stateProvider
+      .state('report', {
+        authRequired: true,
+        url: '/report',
+        templateUrl: 'views/report.html',
+        controller: 'ReportCtrl'
+      });
+  });
+>>>>>>> development

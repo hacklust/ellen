@@ -102,7 +102,4 @@ angular.module('ellenApp', [
         templateUrl: 'views/report.html',
         controller: 'ReportCtrl'
       });
-
-    
-
   });

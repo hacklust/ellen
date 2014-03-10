@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('HomeCtrl', function ($scope, $ionicModal, FeedService, VoteService) {
+  .controller('HomeCtrl', function ($scope, $ionicModal, FeedService, VoteService,  $ionicLoading) {
 
     $scope.feedType = 'Home';
 
     // data
     $scope.feeds = FeedService.all;
+    
 
     $scope.post = {};
 
@@ -64,6 +65,27 @@ angular.module('ellenApp')
 
     $scope.$on('$destroy', function(){
       $scope.modal.remove();
+    });
+
+    $scope.showLoading = function() {
+      $scope.loading = $ionicLoading.show({
+        content: 'Please wait while we validate your identity.<br><i class="ion-load-c"></i>',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 100
+      });
+    };
+
+    $scope.hideLoading = function() {
+      $scope.loading.hide();
+    };
+
+    $scope.showLoading();
+
+    $scope.feeds.$on('loaded', function(){
+      $scope.hideLoading();
+      console.log(true);
     });
 
   });

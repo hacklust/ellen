@@ -23,7 +23,6 @@ angular.module('ellenApp')
           user.$child(post.type).$child(refPost.name()).$set({id: refPost.name()});
           // persist type
           fb.$child('types').$child(post.type).$child(refPost.name()).$set({id: refPost.name()});
-
         })
       },
       findById: function(id){

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('LoginCtrl', function($scope, Auth, UserService, $ionicLoading) {
-    $scope.err = '';
+  .controller('LoginCtrl', function($scope, Auth, UserService, $ionicLoading, $rootScope, $firebase, $timeout) {
+    $scope.err = false;
     $scope.createMode = false;
     $scope.user = {};
 
@@ -13,7 +13,18 @@ angular.module('ellenApp')
           $scope.hideLoading();
           UserService.login(authUser);
         });
+        $rootScope.$on('$firebaseSimpleLogin:error', function (e, authUser) {
+          $scope.err = authUser.code;
+          $scope.hideLoading();
+          $timeout(function(){
+            $scope.err = false; 
+          }, 2400);
+
+        });
       };
+      
+      
+      
     }
 
     $scope.register = function(isValid) {

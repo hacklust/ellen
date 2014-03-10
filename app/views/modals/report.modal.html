@@ -1,0 +1,57 @@
+<div class="modal">
+  <header class="bar bar-header bar-dark">
+    <h1 class="title">Report</h1>
+    <button class="button button-dark" ng-click="closeModal()">Cancel</button>
+  </header>
+  <ion-content has-header="true" padding="true">
+    <p class="dark"><b>Ask about anything in here but make sure to keep it clean.</b></p>
+    <p ng-show="ReportForm.content.$invalid && !reportForm.content.$pristine" class="energized"><b>The content is the most important part of the report!</b></p>
+    <form ng-submit="submitReport(reportForm.$valid)" name="reportForm" novalidate>
+      <div class="list">
+        <p class="item item-divider">
+          Name of the abused.
+        </p>
+        <label class="item item-input">
+          <input name="title" type="text" ng-model="report.abused" placeholder="You perhaps, or someone you know">
+        </label>
+
+        <label class="item item-input">
+          <input name="title" type="text" ng-model="report.abuser" placeholder="Name of the abuser">
+        </label>
+        <p class="item item-divider">
+          Please provide brief and detailed report, including time and place.
+        </p>
+        <label class="item item-input">
+          <textarea name="content" style="height:100px" placeholder=" You can specify names, date, time, place here." ng-model="report.content" ng-minlength="30" ng-maxlength="320" required></textarea>
+        </label>
+        <p class="item item-divider">
+          Was this the first time? Click below to choose.
+        </p>
+        <label class="item item-radio">
+          <input type="radio" name="firstTime" checked="checked" ng-model="report.firstTime">
+          <div class="item-content">
+            Yes
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        <label class="item item-radio">
+          <input type="radio" name="firstTime" ng-model="report.firstTime">
+          <div class="item-content">
+            No
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+      </div>
+
+      <div class="row">
+        <button type="submit" class="button button-assertive icon-left col">
+          <i class="icon ion-flag"></i>
+          Report {{report.category}}
+        </button>
+      </div>
+
+      
+    </form>
+  </ion-content>
+</div>
+

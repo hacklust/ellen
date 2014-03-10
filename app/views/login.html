@@ -7,6 +7,7 @@
         <form name="loginForm" novalidate>
         <!-- <p ng-show="loginForm.name.$invalid && !loginForm.name.$pristine" class="energized"><b>You name is required.</b></p>
         <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="energized"><b>Enter a valid email.</b></p> -->
+        <p ng-show="err" class="energized fade">{{err}}</p>
         <div class="list list-inset">
           <label class="item item-input" ng-show="createMode">
             <i ng-show="loginForm.name.$invalid && !loginForm.name.$pristine" class="icon ion-ios7-information-outline assertive placeholder-icon"></i>

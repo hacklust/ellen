@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('PostCtrl', function ($scope, $stateParams, FeedService, AnswerService) {
+  .controller('PostCtrl', function ($scope, $stateParams, FeedService, AnswerService, CommentService) {
     
     $scope.feed = FeedService.findById($stateParams.id);
     $scope.answer = {};
+    $scope.comment = {};
 
     $scope.toggleMenu = function() {
       $scope.sideMenuController.toggleLeft();
@@ -24,6 +25,13 @@ angular.module('ellenApp')
       if (isValid) {
         AnswerService.add($scope.feed, $stateParams.id, $scope.answer);
         $scope.answer = {};
+      };
+    }
+
+    $scope.commentOn = function(isValid) {
+      if (isValid) {
+        CommentService.add($scope.feed, $scope.stateParams, $scope.comment);
+        $scope.comment = {};
       };
     }
 

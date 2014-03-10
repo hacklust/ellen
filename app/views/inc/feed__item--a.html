@@ -1,4 +1,4 @@
-<div class="list article-card">
+<div class="list card">
   <div class="item item-avatar">
     <img ng-src="{{feed.author.pic}}">
     <h2 class="royal"><a href="#/post/{{feed.id}}"><b>{{feed.title}}</b></a></h2>
@@ -14,13 +14,13 @@
         <ng-pluralize count="feed.score" when="{'0': 'Points', '1' : 'Point', 'other' : 'Points'}"></ng-pluralize></a>
       </a>
       <a href="" class="subdued">
-        {{feed.answerCount}} 
-        <ng-pluralize count="feed.answerCount" when="{'0': 'Answers', '1' : 'Answer', 'other' : 'Answers'}"></ng-pluralize></a>
+        {{feed.commentCount}} 
+        <ng-pluralize count="feed.commentCount" when="{'0': 'Comments', '1' : 'Comment', 'other' : 'Comments'}"></ng-pluralize></a>
       </a>
     </p>
   </div>
   
-  <!-- voting tabs! -->
+   <!-- voting tabs! -->
   <div class="item tabs tabs-secondary tabs-icon-left">
     <a ng-controller="VoteCtrl" class="tab-item" href="" ng-click="upvote(feed.id)">
       <i class="icon ion-chevron-up"></i>
@@ -31,8 +31,8 @@
       Downvote
     </a>
     <a class="tab-item" href="#/post/{{feed.id}}">
-      <i class="icon ion-compose"></i>
-      Answer
+      <i class="icon ion-chatbubble"></i>
+      Comment
     </a>
   </div>
 

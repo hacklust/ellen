@@ -1,23 +1,26 @@
-<div class="list card">
+<div class="list article-card">
   <div class="item item-avatar">
     <img ng-src="{{feed.author.pic}}">
-    <h2 class="royal"><b>{{feed.author.name}}</b></h2>
-    <p>{{feed.dateCreated | date:'fullDate'}}</p>
+    <h2 class="royal"><a href="#/post/{{feed.id}}"><b>{{feed.title}}</b></a></h2>
+    <p>by: {{feed.author.name}} | posted: {{feed.dateCreated | date:'fullDate'}}</p>
   </div>
+  <img class="item item-image full-image" ng-src="images/banner.jpg">
   <div class="item item-body">
-    <h2 class="royal"><b><a href="#/post/{{feed.id}}">{{feed.title}}</a></b></h2>
     <p>
       {{feed.content | excerpt:160}}
+      <blockquote>
+        {{feed.$priority}}
+      </blockquote>
     </p>
   </div>
   
   <!-- voting tabs! -->
   <div class="item tabs tabs-secondary tabs-icon-left">
-    <a ng-controller="VoteCtrl"  class="tab-item" href="" ng-click="upvote(feed.id)">
+    <a ng-controller="VoteCtrl" class="tab-item" href="" ng-click="upvote(feed.id)">
       <i class="icon ion-chevron-up"></i>
       Upvote
     </a>
-    <a ng-controller="VoteCtrl"  class="tab-item" href="" ng-click="downvote(feed.id)">
+    <a ng-controller="VoteCtrl" class="tab-item" href="" ng-click="downvote(feed.id)">
       <i class="icon ion-chevron-down"></i>
       Downvote
     </a>

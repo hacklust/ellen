@@ -60,6 +60,7 @@ angular.module('ellenApp', [
         controller: 'PostCtrl'
       });
 
+
     // the user
 
     $stateProvider
@@ -85,6 +86,14 @@ angular.module('ellenApp', [
         url: '/report',
         templateUrl: 'views/report.html',
         controller: 'ReportCtrl'
+      });
+
+    $stateProvider
+      .state('questions', {
+        authRequired: true,
+        url: '/questions',
+        templateUrl: 'views/home.html',
+        controller: 'QuestionsCtrl'
       });
 
   });

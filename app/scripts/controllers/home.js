@@ -7,6 +7,26 @@ angular.module('ellenApp')
 
     // data
     $scope.feeds = FeedService.all;
+
+    $scope.showLoading = function() {
+      $scope.loading = $ionicLoading.show({
+        content: 'Please wait while we validate your identity.<br><i class="ion-load-c"></i>',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 100
+      });
+    };
+
+    $scope.hideLoading = function() {
+      $scope.loading.hide();
+    };
+
+    $scope.showLoading();
+
+    $scope.feeds.$on('loaded', function(){
+      $scope.hideLoading();
+    });
     
 
     $scope.post = {};
@@ -67,25 +87,6 @@ angular.module('ellenApp')
       $scope.modal.remove();
     });
 
-    $scope.showLoading = function() {
-      $scope.loading = $ionicLoading.show({
-        content: 'Please wait while we validate your identity.<br><i class="ion-load-c"></i>',
-        animation: 'fade-in',
-        showBackdrop: true,
-        maxWidth: 200,
-        showDelay: 100
-      });
-    };
-
-    $scope.hideLoading = function() {
-      $scope.loading.hide();
-    };
-
-    $scope.showLoading();
-
-    $scope.feeds.$on('loaded', function(){
-      $scope.hideLoading();
-      console.log(true);
-    });
+    
 
   });

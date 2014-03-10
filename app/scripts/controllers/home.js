@@ -11,7 +11,7 @@ angular.module('ellenApp')
     $scope.submitPost = function(isValid) {
       if (isValid) {
         // hard-coded  // article for web app only
-        $scope.post.type = 'question';
+        $scope.post.type = 'article';
         FeedService.add($scope.post).then(function(){
           $scope.modal.hide();
           $scope.post = {};

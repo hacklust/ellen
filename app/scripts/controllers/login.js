@@ -21,10 +21,7 @@ angular.module('ellenApp')
           }, 2400);
 
         });
-      };
-      
-      
-      
+      };      
     }
 
     $scope.register = function(isValid) {
@@ -32,6 +29,7 @@ angular.module('ellenApp')
         console.log(isValid);
         Auth.createAccount($scope.user).then(function(authUser){
           UserService.create(authUser, $scope.user);
+          $scope.login(true);
         });
       };
     }

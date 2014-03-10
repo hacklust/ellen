@@ -1,4 +1,4 @@
-<div class="list article-card">
+<div class="list card">
   <div class="item item-avatar">
     <img ng-src="{{feed.author.pic}}">
     <h2 class="royal"><a href="#/post/{{feed.id}}"><b>{{feed.title}}</b></a></h2>
@@ -14,8 +14,8 @@
         <ng-pluralize count="feed.score" when="{'0': 'Points', '1' : 'Point', 'other' : 'Points'}"></ng-pluralize></a>
       </a>
       <a href="" class="subdued">
-        {{feed.answerCount}} 
-        <ng-pluralize count="feed.answerCount" when="{'0': 'Answers', '1' : 'Answer', 'other' : 'Answers'}"></ng-pluralize></a>
+        {{feed.commentCount}} 
+        <ng-pluralize count="feed.commentCount" when="{'0': 'Comments', '1' : 'Comment', 'other' : 'Comments'}"></ng-pluralize></a>
       </a>
     </p>
   </div>
@@ -31,34 +31,25 @@
       Downvote
     </a>
     <a class="tab-item" href="#/post/{{feed.id}}">
-      <i class="icon ion-compose"></i>
-      Answer
+      <i class="icon ion-chatbubble"></i>
+      Comment
     </a>
   </div>
 
-  <!-- answers section -->
-  <div ng-show="feed.answers">
-    <div class="item item-avatar comment" ng-repeat="(answerID, answer) in feed.answers">
-      <img ng-src="{{answer.author.pic}}">
-      <h2>{{answer.author.name}}</h2>
-      <p>{{answer.content}}</p>
+  <!-- commentssection -->
+  <div ng-show="feed.comments">
+    <div class="item item-avatar comment" ng-repeat="(commentID, comment) in feed.comments">
+      <img ng-src="{{comment.author.pic}}">
+      <h2>{{comment.author.name}}</h2>
+      <p>{{comment.content}}</p>
     </div>
   </div>
-</div>
-
-<p class="energized" ng-show="answerForm.content.$invalid && !answerForm.content.$pristine">
-  <b>Answer content must be atleast 30 characters.</b>
-</p>
-
-<h3>Your Answer:</h3> 
-<form name="answerForm" ng-submit="answerQuestion(answerForm.$valid)">
-  <div class="list">
-    <label class="item item-input">
-      <textarea name="content" style="height:100px" placeholder="Type your answer here" ng-model="answer.content" required ng-minlength="30"></textarea>
+  <form name="commentForm" ng-submit="commentOn(commentForm.$valid)" class="item item-input-inset">
+    <label class="item-input-wrapper">
+      <input type="text" ng-model="comment.content" placeholder="Type your comment here" required>
     </label>
-  </div>
-
-  <button type="submit" class="button button-royal" ng-disabled="answerForm.$invalid">
-    Post Your Answer
-  </button>
-</form>
+    <button class="button button-small" ng-disabled="commentForm.$invalid">
+      Comment
+    </button>
+  </form>
+</div>

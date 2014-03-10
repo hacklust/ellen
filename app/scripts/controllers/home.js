@@ -55,7 +55,7 @@ angular.module('ellenApp')
     $scope.rightButtons = [
       { 
         type: 'button-clear',
-        content: '<i class="icon ion-ios7-compose-outline"></i>',
+        content: '<i class="icon ion-compose"></i>',
         tap: function(e) {
           $scope.modal.show();
         }

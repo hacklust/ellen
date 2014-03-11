@@ -10,7 +10,7 @@ angular.module('ellenApp')
 
     $scope.showLoading = function() {
       $scope.loading = $ionicLoading.show({
-        content: 'Please wait while we validate your identity.<br><i class="ion-load-c"></i>',
+        content: 'Loading content. Please wait.<br><i class="ion-load-c"></i>',
         animation: 'fade-in',
         showBackdrop: true,
         maxWidth: 200,

@@ -1,7 +1,7 @@
 <div class="list card">
   <div class="item item-avatar">
     <img ng-src="{{feed.author.pic}}">
-    <h2 class="royal"><b>{{feed.author.name}}</b></h2>
+    <h2 class="royal"><b><a href="#/user/{{feed.author.id}}">{{feed.author.name}}</a></b></h2>
     <p>{{feed.dateCreated | date:'fullDate'}}</p>
   </div>
   <div class="item item-body">

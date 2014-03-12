@@ -2,5 +2,11 @@ node_modules
 dist
 .tmp
 .sass-cache
+builds
 app/bower_components
+<<<<<<< HEAD
 app/*.zip
+=======
+app/*.zip
+*.zip
+>>>>>>> development

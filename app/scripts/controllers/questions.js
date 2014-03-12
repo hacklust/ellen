@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ellenApp')
-  .controller('QuestionsCtrl', function ($scope, QuestionService, FeedService) {
+  .controller('QuestionsCtrl', function ($scope, QuestionService, FeedService, $timeout) {
 
     $scope.feedType = 'Questions';
 
@@ -9,10 +9,9 @@ angular.module('ellenApp')
     $scope.questions = QuestionService.all;
 
     $scope.questions.$on('loaded', function(ref){
-      // workaround
       if (ref === undefined) {
-        angular.forEach(ref, function(a){
-          console.log(a);
+        angular.forEach($scope.questions.$getIndex(), function(key){
+          $scope.feeds.push(FeedService.findById(key));
         });
       } else {
         angular.forEach(ref, function(a){

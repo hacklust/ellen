@@ -235,10 +235,6 @@ input[type="search"] {
   color: #eee;
 }
 
-.scroll-content .card:last-child {
-  margin-bottom: 40px;
-}
-
 .login {
   padding: 60px;
 }

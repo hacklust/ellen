@@ -6,6 +6,7 @@ angular.module('ellenApp')
     var ref = firebaseRef();
     var fb = $firebase(ref);
     var reports = fb.$child('reports');
+    var stats = fb.$child('report_stats');
 
     return {
       add: function(report) {
@@ -16,6 +17,14 @@ angular.module('ellenApp')
         return reports.$add(report).then(function(ref){
           reports.$child(ref.name()).$child('id').$set(ref.name());
           user.$child('reports').$child(ref.name()).$set({id: ref.name()});
+
+          stats.$child(report.priority).$transaction(function(count){
+            if (count === undefined || count === null) {
+              return 1;
+            };
+
+            return count + 1;
+          });
         })
       }
     }

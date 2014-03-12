@@ -9,17 +9,17 @@ angular.module('ellenApp')
     $scope.articles = ArticleService.all;
 
     $scope.articles.$on('loaded', function(ref){
-      // workaround
       if (ref === undefined) {
-        angular.forEach(ref, function(a){
-          console.log(a);
+        angular.forEach($scope.articles.$getIndex(), function(key){
+          $scope.feeds.push(FeedService.findById(key));
         });
       } else {
         angular.forEach(ref, function(a){
           $scope.feeds.push(FeedService.findById(a.id));
         });
       }
-    });
+
+    })
 
     $scope.toggleMenu = function() {
       $scope.sideMenuController.toggleLeft();

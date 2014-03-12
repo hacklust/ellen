@@ -26,14 +26,14 @@
             <i class="icon ion-ios7-unlocked padding-horizontal"></i>
             Login
           </button>
-          <div class="row" ng-show="createMode" >
-            <button ng-click="createMode = false" class="button button-energized icon-left col">
-              <i class="icon ion-ios7-close-empty padding-horizontal"></i>
-              Cancel
-            </button>
-            <button ng-click="register(loginForm.$valid)" class="button button-calm icon-left col" ng-disabled="loginForm.$invalid">
+          <div ng-show="createMode" >
+            <button ng-click="register(loginForm.$valid)" class="button button-calm icon-left button-block" ng-disabled="loginForm.$invalid">
               <i class="icon ion-ios7-checkmark-empty padding-horizontal"></i>
               Register
+            </button>
+            <button ng-click="createMode = false" class="button button-energized icon-left button-block">
+              <i class="icon ion-ios7-close-empty padding-horizontal"></i>
+              Cancel
             </button>
           </div>
         </div>

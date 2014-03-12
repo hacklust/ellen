@@ -26,7 +26,6 @@ angular.module('ellenApp')
       },
 
       createAccount: function(user) {
-        assertAuth();
         return auth.$createUser(user.email, user.password);
       },
       isLoggedIn: function() {

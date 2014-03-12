@@ -5,3 +5,4 @@ dist
 builds
 app/bower_components
 app/*.zip
+*.zip

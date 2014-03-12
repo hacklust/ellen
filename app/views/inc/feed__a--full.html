@@ -2,7 +2,7 @@
   <div class="item item-avatar">
     <img ng-src="{{feed.author.pic}}">
     <h2 class="royal"><a href="#/post/{{feed.id}}"><b>{{feed.title}}</b></a></h2>
-    <p>by: <a href="#/user/{{feed.author.id}}">{{feed.author.name}}</a> | posted: {{feed.dateCreated | date:'fullDate'}}</p>
+    <p>by: {{feed.author.name}} | posted: {{feed.dateCreated | date:'fullDate'}}</p>
   </div>
   <img class="item item-image full-image" ng-src="images/banner.jpg">
   <div class="item item-body">
